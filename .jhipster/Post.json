@@ -1,0 +1,31 @@
+{
+    "name": "Post",
+    "fields": [
+        {
+            "fieldName": "userId",
+            "javadoc": "fieldName",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "body",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200328151800",
+    "javadoc": "The Post entity.\\n@author A true hipster",
+    "entityTableName": "post",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,13 @@
+/**
+ * The Post entity.
+ * @author A true hipster
+ */
+entity Post {
+    /** fieldName */
+    userId Long
+    title String
+    body String
+}
+
+service * with serviceImpl
+paginate * with pagination
