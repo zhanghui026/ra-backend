@@ -277,7 +277,14 @@ dependencies {
 
     // https://mvnrepository.com/artifact/cz.jirutka.rsql/rsql-parser
     compile group: 'cz.jirutka.rsql', name: 'rsql-parser', version: '2.1.0'
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
+    testCompileOnly 'org.projectlombok:lombok:1.18.12'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+    compile 'com.alibaba:fastjson:1.2.61'
     //jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
 }
 

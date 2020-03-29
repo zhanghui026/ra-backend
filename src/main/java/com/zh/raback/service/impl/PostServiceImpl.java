@@ -80,11 +80,6 @@ public class PostServiceImpl implements PostService {
         postRepository.deleteById(id);
     }
 
-    @Override
-    public List<Post> findAllInFilter(List<Long> id) {
-        return postRepository.findAllById(id);
-    }
-
 
     @Override
     @Transactional(readOnly = true)

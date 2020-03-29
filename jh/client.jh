@@ -1,0 +1,17 @@
+/**
+ * The Client entity.
+ * @author A true hipster
+ */
+entity Client {
+    name String
+    username String
+    email String
+    address String
+    phone String
+    website String
+    company String
+}
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination
+

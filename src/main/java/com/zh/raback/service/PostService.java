@@ -45,7 +45,6 @@ public interface PostService {
      */
     void delete(Long id);
 
-    List<Post> findAllInFilter(List<Long> id);
 
     void deleteIds(List<Long> ids);
 
