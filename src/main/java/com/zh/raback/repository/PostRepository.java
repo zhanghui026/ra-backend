@@ -2,6 +2,7 @@ package com.zh.raback.repository;
 
 import com.zh.raback.domain.Post;
 
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +11,5 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface PostRepository extends JpaRepository<Post, Long> {
+public interface PostRepository extends JpaRepository<Post, Long>, JpaSpecificationExecutor<Post> {
 }

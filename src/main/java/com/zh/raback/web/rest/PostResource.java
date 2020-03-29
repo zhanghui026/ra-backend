@@ -2,18 +2,22 @@ package com.zh.raback.web.rest;
 
 import com.zh.raback.domain.Post;
 import com.zh.raback.service.PostService;
+import com.zh.raback.web.rest.rsql.CustomRsqlVisitor;
 import com.zh.raback.web.rest.errors.BadRequestAlertException;
 
+import cz.jirutka.rsql.parser.RSQLParser;
+import cz.jirutka.rsql.parser.ast.Node;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +25,6 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -91,12 +94,20 @@ public class PostResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of posts in body.
      */
     @GetMapping("/posts")
-    public ResponseEntity<List<Post>> getAllPosts(Map<String,Object> filter,Pageable pageable) {
-        log.debug("REST request to get a page of Posts,{}",filter);
+    public ResponseEntity<List<Post>> getAllPosts(@RequestParam(value = "search",required = false) String search,Pageable pageable) {
+        log.debug("REST request to get a page of Posts,{}",search);
+        if (StringUtils.isNotBlank(search)){
+
+            Node rootNode = new RSQLParser().parse(search);
+            Specification<Post> specification = rootNode.accept(new CustomRsqlVisitor<Post>());
+            Page<Post> page = postService.findAllBySearch(specification, pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+            return ResponseEntity.ok().headers(headers).body(page.getContent());
+        } else {
             Page<Post> page = postService.findAll(pageable);
             HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
             return ResponseEntity.ok().headers(headers).body(page.getContent());
-
+        }
     }
 
 

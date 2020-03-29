@@ -4,6 +4,7 @@ import com.zh.raback.domain.Post;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
 import java.util.Optional;
@@ -47,4 +48,6 @@ public interface PostService {
     List<Post> findAllInFilter(List<Long> id);
 
     void deleteIds(List<Long> ids);
+
+     Page<Post> findAllBySearch(Specification<Post> specification, Pageable pageable) ;
 }
