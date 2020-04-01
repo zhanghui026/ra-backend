@@ -10,6 +10,7 @@ import com.zh.raback.util.CommonUtils;
 import com.zh.raback.web.rest.CategoryResource;
 import com.zh.raback.web.rest.ProductResource;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +43,7 @@ public class MockService {
             }).collect(Collectors.toList());
             categoryRepository.saveAll(cats);
         }
-        if (categoryRepository.count() == 0) {
+        if (productRepository.count() == 0) {
             List<Category> cats = categoryRepository.findAll();
             List<Product> products = cats.stream().map(it -> {
                 return IntStream.range(0, 10).mapToObj(index -> {
@@ -62,7 +63,7 @@ public class MockService {
                         .price((long) price)
                         .thumbnail(thumbnail)
                         .image(image)
-                        .description((Faker.instance().lorem().paragraph()))
+                        .description(StringUtils.substring(Faker.instance().lorem().paragraph(),0,255))
                         .stock((long) CommonUtils.toRandomInt(0, 250));
                     return product;
                 }).collect(Collectors.toList());

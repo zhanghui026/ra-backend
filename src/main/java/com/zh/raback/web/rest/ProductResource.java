@@ -150,7 +150,7 @@ public class ProductResource {
      */
     @DeleteMapping("/products")
     public ResponseEntity<Void> deleteProducts(@RequestParam(value = "id") List<Long> ids) {
-        log.debug("REST request to delete Client : {}", ids);
+        log.debug("REST request to delete Product : {}", ids);
         productService.deleteIds(ids);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, ids.toString())).build();
     }

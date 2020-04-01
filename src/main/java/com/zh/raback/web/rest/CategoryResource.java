@@ -112,7 +112,23 @@ public class CategoryResource {
     @DeleteMapping("/categories/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         log.debug("REST request to delete Category : {}", id);
-        categoryRepository.deleteById(id);
+            categoryRepository.deleteById(id);
+
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+    /**
+     * {@code DELETE  /categories/:id} : delete the "id" category.
+     *
+     * @param ids the id of the category to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @DeleteMapping("/categories")
+    public ResponseEntity<Void> deleteCategory(@RequestParam(value = "id") List<Long> ids) {
+        log.debug("REST request to delete Category : {}", ids);
+        for (Long id : ids) {
+            categoryRepository.deleteById(id);
+        }
+
+        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, ids.toString())).build();
     }
 }
