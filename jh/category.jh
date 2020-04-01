@@ -1,0 +1,6 @@
+entity Category {
+    name String
+}
+
+
+

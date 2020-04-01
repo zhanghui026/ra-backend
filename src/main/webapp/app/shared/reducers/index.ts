@@ -20,6 +20,14 @@ import post, {
 import client, {
   ClientState
 } from 'app/entities/client/client.reducer';
+// prettier-ignore
+import category, {
+  CategoryState
+} from 'app/entities/category/category.reducer';
+// prettier-ignore
+import product, {
+  ProductState
+} from 'app/entities/product/product.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -35,6 +43,8 @@ export interface IRootState {
   readonly settings: SettingsState;
   readonly post: PostState;
   readonly client: ClientState;
+  readonly category: CategoryState;
+  readonly product: ProductState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -52,6 +62,8 @@ const rootReducer = combineReducers<IRootState>({
   settings,
   post,
   client,
+  category,
+  product,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar
 });

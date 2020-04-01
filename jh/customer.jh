@@ -1,0 +1,30 @@
+/**
+ * The Customer entity.
+ * @author A true hipster
+ */
+entity Customer {
+    /** fieldName */
+    fieldName String
+    lastName String
+    email String
+    address String
+    zipcode String
+    city String
+    avatar String
+    birthday Instant
+    firstSeen Instant
+    hasOrdered Boolean
+    latestPurchase Instant
+    hasNewsletter Boolean
+    groups String
+    nbCommands Integer
+    totalSpend Integer
+
+}
+
+
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination
+

@@ -1,0 +1,16 @@
+entity Product {
+    categoryId Long
+    description String
+    height Long
+    image String
+    price Long
+    reference String
+    stock Long
+    thumbnail String
+    width Long
+}
+
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination
