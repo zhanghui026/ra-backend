@@ -1,0 +1,43 @@
+/*除图片外其他文件管理,如合同*/
+ entity FileManager {
+
+     /*系统生成的唯一标识*/
+     fileNo String required
+
+     /*所属业务模块*/
+     bizCode String
+
+     /*默认地址*/
+     defaultUrl String
+
+     /*默认路径*/
+     defaultPath String
+
+     /*默认文件名*/
+     defaultFileName String
+
+    /*是否是图片*/
+    isImg Boolean
+
+    /*文件大小*/
+     size Long
+
+     /*是否存在缩略图*/
+     isThumbnail Boolean
+
+     /*是否提交*/
+     isCommit Boolean
+
+     /*创建时间*/
+     createTime Instant
+
+     /*修改时间*/
+     updateTime Instant
+
+ }
+
+
+dto * with mapstruct
+service all with serviceImpl
+paginate all with pagination
+

@@ -8,6 +8,7 @@ import Post from './post';
 import Client from './client';
 import Category from './category';
 import Product from './product';
+import FileManager from './file-manager';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 const Routes = ({ match }) => (
@@ -18,6 +19,7 @@ const Routes = ({ match }) => (
       <ErrorBoundaryRoute path={`${match.url}client`} component={Client} />
       <ErrorBoundaryRoute path={`${match.url}category`} component={Category} />
       <ErrorBoundaryRoute path={`${match.url}product`} component={Product} />
+      <ErrorBoundaryRoute path={`${match.url}file-manager`} component={FileManager} />
       {/* jhipster-needle-add-route-path - JHipster will add routes here */}
     </Switch>
   </div>

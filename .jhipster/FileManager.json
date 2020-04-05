@@ -1,0 +1,64 @@
+{
+    "name": "FileManager",
+    "fields": [
+        {
+            "fieldName": "fileNo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "bizCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "defaultUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "defaultPath",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "defaultFileName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isImg",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "size",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "isThumbnail",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isCommit",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "createTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updateTime",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200405124400",
+    "entityTableName": "file_manager",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

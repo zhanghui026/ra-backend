@@ -11,6 +11,7 @@
         "client": "Client",
         "category": "Category",
         "product": "Product",
+        "fileManager": "File Manager",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -123,3 +123,6 @@ jhipster:
 # ===================================================================
 
 # application:
+application:
+  storage: /Users/zhanghui/storage
+  nginxBase: http://localhost:8001/img

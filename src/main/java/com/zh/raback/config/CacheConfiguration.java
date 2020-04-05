@@ -46,6 +46,7 @@ public class CacheConfiguration {
             createCache(cm, com.zh.raback.domain.Client.class.getName());
             createCache(cm, com.zh.raback.domain.Category.class.getName());
             createCache(cm, com.zh.raback.domain.Product.class.getName());
+            createCache(cm, com.zh.raback.domain.FileManager.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

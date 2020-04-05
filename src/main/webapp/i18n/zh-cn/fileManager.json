@@ -1,0 +1,32 @@
+{
+  "rabackApp": {
+    "fileManager": {
+      "home": {
+        "title": "File Managers",
+        "createLabel": "创建新 File Manager",
+        "createOrEditLabel": "创建或编辑 File Manager",
+        "notFound": "No File Managers found"
+      },
+      "created": "File Manager {{ param }} 创建成功",
+      "updated": "File Manager {{ param }} 更新成功",
+      "deleted": "File Manager {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 File Manager {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "File Manager"
+      },
+      "fileNo": "File No",
+      "bizCode": "Biz Code",
+      "defaultUrl": "Default Url",
+      "defaultPath": "Default Path",
+      "defaultFileName": "Default File Name",
+      "isImg": "Is Img",
+      "size": "Size",
+      "isThumbnail": "Is Thumbnail",
+      "isCommit": "Is Commit",
+      "createTime": "Create Time",
+      "updateTime": "Update Time"
+    }
+  }
+}
