@@ -1,0 +1,20 @@
+/**
+ * The Review entity.
+ * @author A true hipster
+ */
+entity Review {
+    date Instant
+    status String
+    customerId Long
+    commandId Long
+    productId Long
+    rating Integer
+    comment String
+}
+
+
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination
+

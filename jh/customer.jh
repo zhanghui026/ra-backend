@@ -3,8 +3,7 @@
  * @author A true hipster
  */
 entity Customer {
-    /** fieldName */
-    fieldName String
+    firstName String
     lastName String
     email String
     address String
@@ -13,6 +12,7 @@ entity Customer {
     avatar String
     birthday Instant
     firstSeen Instant
+    lastSeen Instant
     hasOrdered Boolean
     latestPurchase Instant
     hasNewsletter Boolean

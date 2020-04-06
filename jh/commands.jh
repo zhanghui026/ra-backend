@@ -1,0 +1,24 @@
+/**
+ * The Command entity.
+ * @author A true hipster
+ */
+entity Command {
+    reference String
+    date Instant
+    customerId Long
+    basket String
+    totalExTaxes Float
+    deliveryFees Float
+    taxRate Float
+    taxes Float
+    total Float
+    status String
+    returned Boolean
+}
+
+
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination
+

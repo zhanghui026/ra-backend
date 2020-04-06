@@ -32,6 +32,22 @@ import product, {
 import fileManager, {
   FileManagerState
 } from 'app/entities/file-manager/file-manager.reducer';
+// prettier-ignore
+import customer, {
+  CustomerState
+} from 'app/entities/customer/customer.reducer';
+// prettier-ignore
+import command, {
+  CommandState
+} from 'app/entities/command/command.reducer';
+// prettier-ignore
+import invoice, {
+  InvoiceState
+} from 'app/entities/invoice/invoice.reducer';
+// prettier-ignore
+import review, {
+  ReviewState
+} from 'app/entities/review/review.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -50,6 +66,10 @@ export interface IRootState {
   readonly category: CategoryState;
   readonly product: ProductState;
   readonly fileManager: FileManagerState;
+  readonly customer: CustomerState;
+  readonly command: CommandState;
+  readonly invoice: InvoiceState;
+  readonly review: ReviewState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -70,6 +90,10 @@ const rootReducer = combineReducers<IRootState>({
   category,
   product,
   fileManager,
+  customer,
+  command,
+  invoice,
+  review,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar
 });

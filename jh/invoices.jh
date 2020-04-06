@@ -1,0 +1,21 @@
+/**
+ * The Invoice entity.
+ * @author A true hipster
+ */
+entity Invoice {
+    date Instant
+    customerId Long
+    commandId Long
+    totalExTaxes Float
+    deliveryFees Float
+    taxRate Float
+    taxes Float
+    total Float
+}
+
+
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination
+

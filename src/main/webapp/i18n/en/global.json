@@ -12,6 +12,10 @@
         "category": "Category",
         "product": "Product",
         "fileManager": "File Manager",
+        "customer": "Customer",
+        "command": "Command",
+        "invoice": "Invoice",
+        "review": "Review",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

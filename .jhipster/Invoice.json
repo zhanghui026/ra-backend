@@ -1,0 +1,50 @@
+{
+    "name": "Invoice",
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "customerId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "commandId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "totalExTaxes",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "deliveryFees",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "taxRate",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "taxes",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "total",
+            "fieldType": "Float"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200406024300",
+    "javadoc": "The Invoice entity.\\n@author A true hipster",
+    "entityTableName": "invoice",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

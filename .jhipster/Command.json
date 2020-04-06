@@ -1,0 +1,62 @@
+{
+    "name": "Command",
+    "fields": [
+        {
+            "fieldName": "reference",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "customerId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "basket",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "totalExTaxes",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "deliveryFees",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "taxRate",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "taxes",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "total",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "returned",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200406024300",
+    "javadoc": "The Command entity.\\n@author A true hipster",
+    "entityTableName": "command",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

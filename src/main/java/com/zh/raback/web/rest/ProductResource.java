@@ -91,6 +91,21 @@ public class ProductResource {
             .body(result);
     }
 
+
+
+    /**
+     * {@code GET  /products/:id} : get the "id" product.
+     *
+     * @param id the id of the productDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the productDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/products/{id}")
+    public ResponseEntity<ProductDTO> getProduct(@PathVariable Long id) {
+        log.debug("REST request to get Product : {}", id);
+        Optional<ProductDTO> productDTO = productService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(productDTO);
+    }
+
     /**
      * {@code GET  /products} : get all the products.
      *
@@ -116,19 +131,6 @@ public class ProductResource {
     }
 
     /**
-     * {@code GET  /products/:id} : get the "id" product.
-     *
-     * @param id the id of the productDTO to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the productDTO, or with status {@code 404 (Not Found)}.
-     */
-    @GetMapping("/products/{id}")
-    public ResponseEntity<ProductDTO> getProduct(@PathVariable Long id) {
-        log.debug("REST request to get Product : {}", id);
-        Optional<ProductDTO> productDTO = productService.findOne(id);
-        return ResponseUtil.wrapOrNotFound(productDTO);
-    }
-
-    /**
      * {@code DELETE  /products/:id} : delete the "id" product.
      *
      * @param id the id of the productDTO to delete.
@@ -145,7 +147,7 @@ public class ProductResource {
     /**
      * {@code DELETE  /posts/:id} : delete the "id" post.
      *
-     * @param id the id of the post to delete.
+     * @param ids the id of the post to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/products")

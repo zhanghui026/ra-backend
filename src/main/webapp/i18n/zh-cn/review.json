@@ -1,0 +1,28 @@
+{
+  "rabackApp": {
+    "review": {
+      "home": {
+        "title": "Reviews",
+        "createLabel": "创建新 Review",
+        "createOrEditLabel": "创建或编辑 Review",
+        "notFound": "No Reviews found"
+      },
+      "created": "Review {{ param }} 创建成功",
+      "updated": "Review {{ param }} 更新成功",
+      "deleted": "Review {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Review {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Review"
+      },
+      "date": "Date",
+      "status": "Status",
+      "customerId": "Customer Id",
+      "commandId": "Command Id",
+      "productId": "Product Id",
+      "rating": "Rating",
+      "comment": "Comment"
+    }
+  }
+}

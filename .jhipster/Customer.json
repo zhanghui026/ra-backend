@@ -1,0 +1,82 @@
+{
+    "name": "Customer",
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "zipcode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "avatar",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "birthday",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "firstSeen",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "lastSeen",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "hasOrdered",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "latestPurchase",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "hasNewsletter",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "groups",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nbCommands",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "totalSpend",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200406011100",
+    "javadoc": "The Customer entity.\\n@author A true hipster",
+    "entityTableName": "customer",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
