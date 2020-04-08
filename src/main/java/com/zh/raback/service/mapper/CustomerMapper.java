@@ -21,14 +21,24 @@ public interface CustomerMapper extends EntityMapper<CustomerDTO, Customer> {
 
 
     @Mappings({
-        @Mapping(target = "groups",source = "groups", qualifiedBy = JoinElement.class)
+        @Mapping(target = "groups",source = "groups", qualifiedBy = JoinElement.class),
+        @Mapping(target = "birthday",dateFormat = "yyyy-MM-dd"),
+        @Mapping(target = "firstSeen",dateFormat = "yyyy-MM-dd"),
+        @Mapping(target = "lastSeen",dateFormat = "yyyy-MM-dd"),
+        @Mapping(target = "latestPurchase",dateFormat = "yyyy-MM-dd")
+
     })
     @Override
     Customer toEntity(CustomerDTO dto);
 
 
     @Mappings({
-        @Mapping(target = "groups",source = "groups", qualifiedBy = SplitElement.class)
+        @Mapping(target = "groups",source = "groups", qualifiedBy = SplitElement.class),
+        @Mapping(target = "birthday",dateFormat = "yyyy-MM-dd"),
+        @Mapping(target = "firstSeen",dateFormat = "yyyy-MM-dd"),
+        @Mapping(target = "lastSeen",dateFormat = "yyyy-MM-dd"),
+        @Mapping(target = "latestPurchase",dateFormat = "yyyy-MM-dd")
+
     })
     @Override
     CustomerDTO toDto(Customer entity);

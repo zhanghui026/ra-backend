@@ -5,13 +5,8 @@ import com.google.common.collect.Lists;
 import com.zh.raback.domain.Category;
 import com.zh.raback.domain.Customer;
 import com.zh.raback.domain.Product;
-import com.zh.raback.repository.CategoryRepository;
-import com.zh.raback.repository.CustomerRepository;
-import com.zh.raback.repository.ProductRepository;
+import com.zh.raback.repository.*;
 import com.zh.raback.util.CommonUtils;
-import com.zh.raback.web.rest.CategoryResource;
-import com.zh.raback.web.rest.ProductResource;
-import liquibase.pro.packaged.F;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +33,16 @@ public class MockService {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private CommandRepository commandRepository;
+
+    @Autowired
+    private InvoiceRepository invoiceRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
+
 
     @PostConstruct
     public void init (){
@@ -83,14 +88,17 @@ public class MockService {
         if (customerRepository.count() == 0){
             initCustomer();
         }
+
+
+
     }
 
 
     public void initCustomer() {
         List<Customer> list = IntStream.range(0, 900).mapToObj(it -> {
 
-            Instant firstSeen = Instant.ofEpochMilli(randomDate(300).getTime());
-            Instant lastSeen = Instant.ofEpochMilli(randomDate(100).getTime());
+            Date firstSeen = randomDate(300);
+            Date lastSeen = randomDate(100);
 
             Boolean hasOrdered = Faker.instance().bool().bool();
 
@@ -109,7 +117,7 @@ public class MockService {
                 .zipcode(hasOrdered ? Faker.instance().address().zipCode() : null)
                 .city(hasOrdered ? Faker.instance().address().city() : null)
                 .avatar(Faker.instance().avatar().image())
-                .birthday(birthDay.toInstant())
+                .birthday(birthDay)
                 .firstSeen(firstSeen)
                 .lastSeen(lastSeen)
                 .hasOrdered(hasOrdered)

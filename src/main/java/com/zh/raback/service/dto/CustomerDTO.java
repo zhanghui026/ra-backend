@@ -28,15 +28,15 @@ public class CustomerDTO implements Serializable {
 
     private String avatar;
 
-    private Instant birthday;
+    private String birthday;
 
-    private Instant firstSeen;
+    private String firstSeen;
 
-    private Instant lastSeen;
+    private String lastSeen;
 
     private Boolean hasOrdered;
 
-    private Instant latestPurchase;
+    private String latestPurchase;
 
     private Boolean hasNewsletter;
 
@@ -111,27 +111,27 @@ public class CustomerDTO implements Serializable {
         this.avatar = avatar;
     }
 
-    public Instant getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Instant birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public Instant getFirstSeen() {
+    public String getFirstSeen() {
         return firstSeen;
     }
 
-    public void setFirstSeen(Instant firstSeen) {
+    public void setFirstSeen(String firstSeen) {
         this.firstSeen = firstSeen;
     }
 
-    public Instant getLastSeen() {
+    public String getLastSeen() {
         return lastSeen;
     }
 
-    public void setLastSeen(Instant lastSeen) {
+    public void setLastSeen(String lastSeen) {
         this.lastSeen = lastSeen;
     }
 
@@ -143,11 +143,11 @@ public class CustomerDTO implements Serializable {
         this.hasOrdered = hasOrdered;
     }
 
-    public Instant getLatestPurchase() {
+    public String getLatestPurchase() {
         return latestPurchase;
     }
 
-    public void setLatestPurchase(Instant latestPurchase) {
+    public void setLatestPurchase(String latestPurchase) {
         this.latestPurchase = latestPurchase;
     }
 

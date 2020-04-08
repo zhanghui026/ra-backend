@@ -6,8 +6,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
-import java.time.Instant;
 
 /**
  * The Customer entity.\n@author A true hipster
@@ -45,19 +45,19 @@ public class Customer implements Serializable {
     private String avatar;
 
     @Column(name = "birthday")
-    private Instant birthday;
+    private Date birthday;
 
     @Column(name = "first_seen")
-    private Instant firstSeen;
+    private Date firstSeen;
 
     @Column(name = "last_seen")
-    private Instant lastSeen;
+    private Date lastSeen;
 
     @Column(name = "has_ordered")
     private Boolean hasOrdered;
 
     @Column(name = "latest_purchase")
-    private Instant latestPurchase;
+    private Date latestPurchase;
 
     @Column(name = "has_newsletter")
     private Boolean hasNewsletter;
@@ -171,42 +171,42 @@ public class Customer implements Serializable {
         this.avatar = avatar;
     }
 
-    public Instant getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public Customer birthday(Instant birthday) {
+    public Customer birthday(Date birthday) {
         this.birthday = birthday;
         return this;
     }
 
-    public void setBirthday(Instant birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
-    public Instant getFirstSeen() {
+    public Date getFirstSeen() {
         return firstSeen;
     }
 
-    public Customer firstSeen(Instant firstSeen) {
+    public Customer firstSeen(Date firstSeen) {
         this.firstSeen = firstSeen;
         return this;
     }
 
-    public void setFirstSeen(Instant firstSeen) {
+    public void setFirstSeen(Date firstSeen) {
         this.firstSeen = firstSeen;
     }
 
-    public Instant getLastSeen() {
+    public Date getLastSeen() {
         return lastSeen;
     }
 
-    public Customer lastSeen(Instant lastSeen) {
+    public Customer lastSeen(Date lastSeen) {
         this.lastSeen = lastSeen;
         return this;
     }
 
-    public void setLastSeen(Instant lastSeen) {
+    public void setLastSeen(Date lastSeen) {
         this.lastSeen = lastSeen;
     }
 
@@ -223,16 +223,16 @@ public class Customer implements Serializable {
         this.hasOrdered = hasOrdered;
     }
 
-    public Instant getLatestPurchase() {
+    public Date getLatestPurchase() {
         return latestPurchase;
     }
 
-    public Customer latestPurchase(Instant latestPurchase) {
+    public Customer latestPurchase(Date latestPurchase) {
         this.latestPurchase = latestPurchase;
         return this;
     }
 
-    public void setLatestPurchase(Instant latestPurchase) {
+    public void setLatestPurchase(Date latestPurchase) {
         this.latestPurchase = latestPurchase;
     }
 
