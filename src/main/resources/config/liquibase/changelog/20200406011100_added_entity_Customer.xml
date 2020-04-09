@@ -61,7 +61,7 @@
             <column name="nb_commands" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="total_spend" type="integer">
+            <column name="total_spend" type="${floatType}">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -85,30 +85,30 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-    <changeSet id="20200406011100-1-data" author="jhipster" context="faker">
-        <loadData
-                  file="config/liquibase/fake-data/customer.csv"
-                  separator=";"
-                  tableName="customer">
-            <column name="id" type="numeric"/>
-            <column name="first_name" type="string"/>
-            <column name="last_name" type="string"/>
-            <column name="email" type="string"/>
-            <column name="address" type="string"/>
-            <column name="zipcode" type="string"/>
-            <column name="city" type="string"/>
-            <column name="avatar" type="string"/>
-            <column name="birthday" type="datetime"/>
-            <column name="first_seen" type="datetime"/>
-            <column name="last_seen" type="datetime"/>
-            <column name="has_ordered" type="boolean"/>
-            <column name="latest_purchase" type="datetime"/>
-            <column name="has_newsletter" type="boolean"/>
-            <column name="jhi_groups" type="string"/>
-            <column name="nb_commands" type="numeric"/>
-            <column name="total_spend" type="numeric"/>
-            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
-        </loadData>
-    </changeSet>
+<!--    <changeSet id="20200406011100-1-data" author="jhipster" context="faker">-->
+<!--        <loadData-->
+<!--                  file="config/liquibase/fake-data/customer.csv"-->
+<!--                  separator=";"-->
+<!--                  tableName="customer">-->
+<!--            <column name="id" type="numeric"/>-->
+<!--            <column name="first_name" type="string"/>-->
+<!--            <column name="last_name" type="string"/>-->
+<!--            <column name="email" type="string"/>-->
+<!--            <column name="address" type="string"/>-->
+<!--            <column name="zipcode" type="string"/>-->
+<!--            <column name="city" type="string"/>-->
+<!--            <column name="avatar" type="string"/>-->
+<!--            <column name="birthday" type="datetime"/>-->
+<!--            <column name="first_seen" type="datetime"/>-->
+<!--            <column name="last_seen" type="datetime"/>-->
+<!--            <column name="has_ordered" type="boolean"/>-->
+<!--            <column name="latest_purchase" type="datetime"/>-->
+<!--            <column name="has_newsletter" type="boolean"/>-->
+<!--            <column name="jhi_groups" type="string"/>-->
+<!--            <column name="nb_commands" type="numeric"/>-->
+<!--            <column name="total_spend" type="numeric"/>-->
+<!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove&ndash;&gt;-->
+<!--        </loadData>-->
+<!--    </changeSet>-->
 
 </databaseChangeLog>

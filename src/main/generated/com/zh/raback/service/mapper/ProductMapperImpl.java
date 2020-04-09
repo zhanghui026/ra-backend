@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-04-01T02:12:22+0800",
+    date = "2020-04-09T21:43:59+0800",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.3 (Oracle Corporation)"
 )
 @Component
@@ -28,7 +28,9 @@ public class ProductMapperImpl implements ProductMapper {
         product.setDescription( dto.getDescription() );
         product.setHeight( dto.getHeight() );
         product.setImage( dto.getImage() );
-        product.setPrice( dto.getPrice() );
+        if ( dto.getPrice() != null ) {
+            product.setPrice( dto.getPrice().floatValue() );
+        }
         product.setReference( dto.getReference() );
         product.setStock( dto.getStock() );
         product.setThumbnail( dto.getThumbnail() );
@@ -50,7 +52,9 @@ public class ProductMapperImpl implements ProductMapper {
         productDTO.setDescription( entity.getDescription() );
         productDTO.setHeight( entity.getHeight() );
         productDTO.setImage( entity.getImage() );
-        productDTO.setPrice( entity.getPrice() );
+        if ( entity.getPrice() != null ) {
+            productDTO.setPrice( entity.getPrice().longValue() );
+        }
         productDTO.setReference( entity.getReference() );
         productDTO.setStock( entity.getStock() );
         productDTO.setThumbnail( entity.getThumbnail() );

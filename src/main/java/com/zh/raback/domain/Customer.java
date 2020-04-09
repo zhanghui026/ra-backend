@@ -69,7 +69,7 @@ public class Customer implements Serializable {
     private Integer nbCommands;
 
     @Column(name = "total_spend")
-    private Integer totalSpend;
+    private Float totalSpend;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -275,16 +275,16 @@ public class Customer implements Serializable {
         this.nbCommands = nbCommands;
     }
 
-    public Integer getTotalSpend() {
+    public Float getTotalSpend() {
         return totalSpend;
     }
 
-    public Customer totalSpend(Integer totalSpend) {
+    public Customer totalSpend(Float totalSpend) {
         this.totalSpend = totalSpend;
         return this;
     }
 
-    public void setTotalSpend(Integer totalSpend) {
+    public void setTotalSpend(Float totalSpend) {
         this.totalSpend = totalSpend;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove

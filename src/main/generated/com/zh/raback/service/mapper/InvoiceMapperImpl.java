@@ -1,0 +1,92 @@
+package com.zh.raback.service.mapper;
+
+import com.zh.raback.domain.Invoice;
+import com.zh.raback.service.dto.InvoiceDTO;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.annotation.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2020-04-09T21:43:59+0800",
+    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.3 (Oracle Corporation)"
+)
+@Component
+public class InvoiceMapperImpl implements InvoiceMapper {
+
+    @Override
+    public Invoice toEntity(InvoiceDTO dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        Invoice invoice = new Invoice();
+
+        invoice.setId( dto.getId() );
+        if ( dto.getDate() != null ) {
+            invoice.setDate( Date.from( dto.getDate() ) );
+        }
+        invoice.setCustomerId( dto.getCustomerId() );
+        invoice.setCommandId( dto.getCommandId() );
+        invoice.setTotalExTaxes( dto.getTotalExTaxes() );
+        invoice.setDeliveryFees( dto.getDeliveryFees() );
+        invoice.setTaxRate( dto.getTaxRate() );
+        invoice.setTaxes( dto.getTaxes() );
+        invoice.setTotal( dto.getTotal() );
+
+        return invoice;
+    }
+
+    @Override
+    public InvoiceDTO toDto(Invoice entity) {
+        if ( entity == null ) {
+            return null;
+        }
+
+        InvoiceDTO invoiceDTO = new InvoiceDTO();
+
+        invoiceDTO.setId( entity.getId() );
+        if ( entity.getDate() != null ) {
+            invoiceDTO.setDate( entity.getDate().toInstant() );
+        }
+        invoiceDTO.setCustomerId( entity.getCustomerId() );
+        invoiceDTO.setCommandId( entity.getCommandId() );
+        invoiceDTO.setTotalExTaxes( entity.getTotalExTaxes() );
+        invoiceDTO.setDeliveryFees( entity.getDeliveryFees() );
+        invoiceDTO.setTaxRate( entity.getTaxRate() );
+        invoiceDTO.setTaxes( entity.getTaxes() );
+        invoiceDTO.setTotal( entity.getTotal() );
+
+        return invoiceDTO;
+    }
+
+    @Override
+    public List<Invoice> toEntity(List<InvoiceDTO> dtoList) {
+        if ( dtoList == null ) {
+            return null;
+        }
+
+        List<Invoice> list = new ArrayList<Invoice>( dtoList.size() );
+        for ( InvoiceDTO invoiceDTO : dtoList ) {
+            list.add( toEntity( invoiceDTO ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<InvoiceDTO> toDto(List<Invoice> entityList) {
+        if ( entityList == null ) {
+            return null;
+        }
+
+        List<InvoiceDTO> list = new ArrayList<InvoiceDTO>( entityList.size() );
+        for ( Invoice invoice : entityList ) {
+            list.add( toDto( invoice ) );
+        }
+
+        return list;
+    }
+}

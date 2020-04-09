@@ -6,8 +6,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
-import java.time.Instant;
 
 /**
  * The Command entity.\n@author A true hipster
@@ -27,7 +27,7 @@ public class Command implements Serializable {
     private String reference;
 
     @Column(name = "date")
-    private Instant date;
+    private Date date;
 
     @Column(name = "customer_id")
     private Long customerId;
@@ -78,16 +78,16 @@ public class Command implements Serializable {
         this.reference = reference;
     }
 
-    public Instant getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public Command date(Instant date) {
+    public Command date(Date date) {
         this.date = date;
         return this;
     }
 
-    public void setDate(Instant date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

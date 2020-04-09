@@ -6,8 +6,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
-import java.time.Instant;
 
 /**
  * The Review entity.\n@author A true hipster
@@ -24,7 +24,7 @@ public class Review implements Serializable {
     private Long id;
 
     @Column(name = "date")
-    private Instant date;
+    private Date date;
 
     @Column(name = "status")
     private String status;
@@ -53,16 +53,16 @@ public class Review implements Serializable {
         this.id = id;
     }
 
-    public Instant getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public Review date(Instant date) {
+    public Review date(Date date) {
         this.date = date;
         return this;
     }
 
-    public void setDate(Instant date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

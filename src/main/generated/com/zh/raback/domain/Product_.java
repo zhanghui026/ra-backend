@@ -11,7 +11,7 @@ public abstract class Product_ {
 	public static volatile SingularAttribute<Product, String> reference;
 	public static volatile SingularAttribute<Product, String> image;
 	public static volatile SingularAttribute<Product, String> thumbnail;
-	public static volatile SingularAttribute<Product, Long> price;
+	public static volatile SingularAttribute<Product, Float> price;
 	public static volatile SingularAttribute<Product, Long> width;
 	public static volatile SingularAttribute<Product, String> description;
 	public static volatile SingularAttribute<Product, Long> id;

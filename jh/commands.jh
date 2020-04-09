@@ -4,7 +4,7 @@
  */
 entity Command {
     reference String
-    date Instant
+    date Date
     customerId Long
     basket String
     totalExTaxes Float

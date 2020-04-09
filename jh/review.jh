@@ -3,7 +3,7 @@
  * @author A true hipster
  */
 entity Review {
-    date Instant
+    date Date
     status String
     customerId Long
     commandId Long

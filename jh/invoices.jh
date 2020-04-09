@@ -3,7 +3,7 @@
  * @author A true hipster
  */
 entity Invoice {
-    date Instant
+    date Date
     customerId Long
     commandId Long
     totalExTaxes Float

@@ -34,7 +34,7 @@
             <column name="rating" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="comment" type="varchar(255)">
+            <column name="comment" type="varchar(4096)">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -55,21 +55,21 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-    <changeSet id="20200406024500-1-data" author="jhipster" context="faker">
-        <loadData
-                  file="config/liquibase/fake-data/review.csv"
-                  separator=";"
-                  tableName="review">
-            <column name="id" type="numeric"/>
-            <column name="date" type="datetime"/>
-            <column name="status" type="string"/>
-            <column name="customer_id" type="numeric"/>
-            <column name="command_id" type="numeric"/>
-            <column name="product_id" type="numeric"/>
-            <column name="rating" type="numeric"/>
-            <column name="comment" type="string"/>
-            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
-        </loadData>
-    </changeSet>
+<!--    <changeSet id="20200406024500-1-data" author="jhipster" context="faker">-->
+<!--        <loadData-->
+<!--                  file="config/liquibase/fake-data/review.csv"-->
+<!--                  separator=";"-->
+<!--                  tableName="review">-->
+<!--            <column name="id" type="numeric"/>-->
+<!--            <column name="date" type="datetime"/>-->
+<!--            <column name="status" type="string"/>-->
+<!--            <column name="customer_id" type="numeric"/>-->
+<!--            <column name="command_id" type="numeric"/>-->
+<!--            <column name="product_id" type="numeric"/>-->
+<!--            <column name="rating" type="numeric"/>-->
+<!--            <column name="comment" type="string"/>-->
+<!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove&ndash;&gt;-->
+<!--        </loadData>-->
+<!--    </changeSet>-->
 
 </databaseChangeLog>

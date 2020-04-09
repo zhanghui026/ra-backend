@@ -35,7 +35,7 @@ public class Product implements Serializable {
     private String image;
 
     @Column(name = "price")
-    private Long price;
+    private Float price;
 
     @Column(name = "reference")
     private String reference;
@@ -110,16 +110,16 @@ public class Product implements Serializable {
         this.image = image;
     }
 
-    public Long getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public Product price(Long price) {
+    public Product price(Float price) {
         this.price = price;
         return this;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
@@ -206,5 +206,9 @@ public class Product implements Serializable {
             ", thumbnail='" + getThumbnail() + "'" +
             ", width=" + getWidth() +
             "}";
+    }
+
+    public int getQuantity() {
+        return 1;
     }
 }

@@ -10,15 +10,15 @@ entity Customer {
     zipcode String
     city String
     avatar String
-    birthday Instant
-    firstSeen Instant
-    lastSeen Instant
+    birthday Date
+    firstSeen Date
+    lastSeen Date
     hasOrdered Boolean
-    latestPurchase Instant
+    latestPurchase Date
     hasNewsletter Boolean
     groups String
     nbCommands Integer
-    totalSpend Integer
+    totalSpend Float
 
 }
 
