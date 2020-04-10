@@ -1,8 +1,11 @@
 package com.zh.raback.service.dto;
 
 import io.swagger.annotations.ApiModel;
+import lombok.Data;
+
 import java.time.Instant;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -10,16 +13,22 @@ import java.util.Objects;
  */
 @ApiModel(description = "The Command entity.\n@author A true hipster")
 public class CommandDTO implements Serializable {
-    
+
+    @Data
+    public static class Basket {
+        private Long productId;
+        private int quantity;
+    }
+
     private Long id;
 
     private String reference;
 
-    private Instant date;
+    private String date;
 
     private Long customerId;
 
-    private String basket;
+    private List<Basket> basket;
 
     private Float totalExTaxes;
 
@@ -35,7 +44,7 @@ public class CommandDTO implements Serializable {
 
     private Boolean returned;
 
-    
+
     public Long getId() {
         return id;
     }
@@ -52,11 +61,11 @@ public class CommandDTO implements Serializable {
         this.reference = reference;
     }
 
-    public Instant getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Instant date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -68,11 +77,11 @@ public class CommandDTO implements Serializable {
         this.customerId = customerId;
     }
 
-    public String getBasket() {
+    public List<Basket> getBasket() {
         return basket;
     }
 
-    public void setBasket(String basket) {
+    public void setBasket(List<Basket> basket) {
         this.basket = basket;
     }
 

@@ -283,7 +283,8 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.12'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
 
-    implementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation ('com.github.javafaker:javafaker:1.0.2') { exclude group: 'org.yaml' }
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.23'
     compile 'com.alibaba:fastjson:1.2.61'
     //jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
 }
