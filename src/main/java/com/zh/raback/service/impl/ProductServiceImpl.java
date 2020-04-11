@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link Product}.
@@ -106,5 +107,10 @@ public class ProductServiceImpl implements ProductService {
         for (Long id : ids) {
             productRepository.deleteById(id);
         }
+    }
+
+    @Override
+    public List<ProductDTO> findAllInIds(List<Long> ids) {
+        return productRepository.findAllByIdIn(ids).stream().map(productMapper::toDto).collect(Collectors.toList());
     }
 }

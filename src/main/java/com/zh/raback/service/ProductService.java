@@ -49,4 +49,6 @@ public interface ProductService {
     Page<ProductDTO> findAllBySearch(Specification<Product> specification, Pageable pageable);
 
     void deleteIds(List<Long> ids);
+
+    List<ProductDTO> findAllInIds(List<Long> ids);
 }

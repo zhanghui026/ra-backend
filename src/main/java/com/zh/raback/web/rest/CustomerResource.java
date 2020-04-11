@@ -155,7 +155,7 @@ public class CustomerResource {
                                                             @RequestParam(value = "ids",required = false) List<Long> ids,
                                                             Pageable pageable) {
         log.debug("REST request to get a page of Products");
-        if (ids != null && ids.size() > 0) {
+        if (ids != null) {
 
                 List<CustomerDTO> list = customerService.findAllInIds(ids);
                 return ResponseEntity.ok().body(list);

@@ -4,6 +4,7 @@ import com.zh.raback.domain.Client;
 import com.zh.raback.domain.Product;
 import com.zh.raback.service.ProductService;
 import com.zh.raback.service.dto.ClientDTO;
+import com.zh.raback.service.dto.CustomerDTO;
 import com.zh.raback.web.rest.errors.BadRequestAlertException;
 import com.zh.raback.service.dto.ProductDTO;
 
@@ -113,9 +114,17 @@ public class ProductResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of products in body.
      */
     @GetMapping("/products")
-    public ResponseEntity<List<ProductDTO>> getAllProducts(@RequestParam(value = "search",required = false) String search,Pageable pageable) {
+    public ResponseEntity<List<ProductDTO>> getAllProducts(@RequestParam(value = "search",required = false) String search,
+                                                           @RequestParam(value = "ids",required = false) List<Long> ids,
+                                                           Pageable pageable) {
         log.debug("REST request to get a page of Products");
-        if (StringUtils.isNotBlank(search)){
+        if (ids != null) {
+
+            List<ProductDTO> list = productService.findAllInIds(ids);
+            return ResponseEntity.ok().body(list);
+
+
+        }else if (StringUtils.isNotBlank(search)){
 
             Node rootNode = new RSQLParser().parse(search);
             Specification<Product> specification = rootNode.accept(new CustomRsqlVisitor<Product>());
