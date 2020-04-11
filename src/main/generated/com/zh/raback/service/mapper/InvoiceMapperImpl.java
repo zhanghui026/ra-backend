@@ -2,41 +2,47 @@ package com.zh.raback.service.mapper;
 
 import com.zh.raback.domain.Invoice;
 import com.zh.raback.service.dto.InvoiceDTO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.annotation.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-04-10T22:10:20+0800",
+    date = "2020-04-11T11:20:00+0800",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.3 (Oracle Corporation)"
 )
 @Component
 public class InvoiceMapperImpl implements InvoiceMapper {
 
     @Override
-    public Invoice toEntity(InvoiceDTO dto) {
-        if ( dto == null ) {
+    public List<Invoice> toEntity(List<InvoiceDTO> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        Invoice invoice = new Invoice();
-
-        invoice.setId( dto.getId() );
-        if ( dto.getDate() != null ) {
-            invoice.setDate( Date.from( dto.getDate() ) );
+        List<Invoice> list = new ArrayList<Invoice>( arg0.size() );
+        for ( InvoiceDTO invoiceDTO : arg0 ) {
+            list.add( toEntity( invoiceDTO ) );
         }
-        invoice.setCustomerId( dto.getCustomerId() );
-        invoice.setCommandId( dto.getCommandId() );
-        invoice.setTotalExTaxes( dto.getTotalExTaxes() );
-        invoice.setDeliveryFees( dto.getDeliveryFees() );
-        invoice.setTaxRate( dto.getTaxRate() );
-        invoice.setTaxes( dto.getTaxes() );
-        invoice.setTotal( dto.getTotal() );
 
-        return invoice;
+        return list;
+    }
+
+    @Override
+    public List<InvoiceDTO> toDto(List<Invoice> arg0) {
+        if ( arg0 == null ) {
+            return null;
+        }
+
+        List<InvoiceDTO> list = new ArrayList<InvoiceDTO>( arg0.size() );
+        for ( Invoice invoice : arg0 ) {
+            list.add( toDto( invoice ) );
+        }
+
+        return list;
     }
 
     @Override
@@ -49,7 +55,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
 
         invoiceDTO.setId( entity.getId() );
         if ( entity.getDate() != null ) {
-            invoiceDTO.setDate( entity.getDate().toInstant() );
+            invoiceDTO.setDate( new SimpleDateFormat( "yyyy-MM-dd" ).format( entity.getDate() ) );
         }
         invoiceDTO.setCustomerId( entity.getCustomerId() );
         invoiceDTO.setCommandId( entity.getCommandId() );
@@ -63,30 +69,30 @@ public class InvoiceMapperImpl implements InvoiceMapper {
     }
 
     @Override
-    public List<Invoice> toEntity(List<InvoiceDTO> dtoList) {
-        if ( dtoList == null ) {
+    public Invoice toEntity(InvoiceDTO dto) {
+        if ( dto == null ) {
             return null;
         }
 
-        List<Invoice> list = new ArrayList<Invoice>( dtoList.size() );
-        for ( InvoiceDTO invoiceDTO : dtoList ) {
-            list.add( toEntity( invoiceDTO ) );
+        Invoice invoice = new Invoice();
+
+        invoice.setId( dto.getId() );
+        try {
+            if ( dto.getDate() != null ) {
+                invoice.setDate( new SimpleDateFormat( "yyyy-MM-dd" ).parse( dto.getDate() ) );
+            }
         }
-
-        return list;
-    }
-
-    @Override
-    public List<InvoiceDTO> toDto(List<Invoice> entityList) {
-        if ( entityList == null ) {
-            return null;
+        catch ( ParseException e ) {
+            throw new RuntimeException( e );
         }
+        invoice.setCustomerId( dto.getCustomerId() );
+        invoice.setCommandId( dto.getCommandId() );
+        invoice.setTotalExTaxes( dto.getTotalExTaxes() );
+        invoice.setDeliveryFees( dto.getDeliveryFees() );
+        invoice.setTaxRate( dto.getTaxRate() );
+        invoice.setTaxes( dto.getTaxes() );
+        invoice.setTotal( dto.getTotal() );
 
-        List<InvoiceDTO> list = new ArrayList<InvoiceDTO>( entityList.size() );
-        for ( Invoice invoice : entityList ) {
-            list.add( toDto( invoice ) );
-        }
-
-        return list;
+        return invoice;
     }
 }

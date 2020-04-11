@@ -10,10 +10,10 @@ import java.util.Objects;
  */
 @ApiModel(description = "The Invoice entity.\n@author A true hipster")
 public class InvoiceDTO implements Serializable {
-    
+
     private Long id;
 
-    private Instant date;
+    private String date;
 
     private Long customerId;
 
@@ -29,7 +29,7 @@ public class InvoiceDTO implements Serializable {
 
     private Float total;
 
-    
+
     public Long getId() {
         return id;
     }
@@ -38,11 +38,11 @@ public class InvoiceDTO implements Serializable {
         this.id = id;
     }
 
-    public Instant getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Instant date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

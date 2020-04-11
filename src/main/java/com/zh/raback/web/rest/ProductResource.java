@@ -119,11 +119,8 @@ public class ProductResource {
                                                            Pageable pageable) {
         log.debug("REST request to get a page of Products");
         if (ids != null) {
-
             List<ProductDTO> list = productService.findAllInIds(ids);
             return ResponseEntity.ok().body(list);
-
-
         }else if (StringUtils.isNotBlank(search)){
 
             Node rootNode = new RSQLParser().parse(search);
@@ -160,7 +157,7 @@ public class ProductResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/products")
-    public ResponseEntity<Void> deleteProducts(@RequestParam(value = "id") List<Long> ids) {
+    public ResponseEntity<Void> deleteAll(@RequestParam(value = "id") List<Long> ids) {
         log.debug("REST request to delete Product : {}", ids);
         productService.deleteIds(ids);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, ids.toString())).build();

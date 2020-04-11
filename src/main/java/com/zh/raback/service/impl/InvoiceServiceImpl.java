@@ -10,10 +10,13 @@ import org.slf4j.LoggerFactory;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link Invoice}.
@@ -84,5 +87,22 @@ public class InvoiceServiceImpl implements InvoiceService {
     public void delete(Long id) {
         log.debug("Request to delete Invoice : {}", id);
         invoiceRepository.deleteById(id);
+    }
+
+    @Override
+    public List<InvoiceDTO> findAllInIds(List<Long> ids) {
+        return invoiceRepository.findAllByIdIn(ids).stream().map(invoiceMapper::toDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<InvoiceDTO> findAllBySearch(Specification<Invoice> specification, Pageable pageable) {
+        return invoiceRepository.findAll(specification,pageable).map(invoiceMapper::toDto);
+    }
+
+    @Override
+    public void deleteIds(List<Long> ids) {
+        for (Long id : ids) {
+            delete(id);
+        }
     }
 }

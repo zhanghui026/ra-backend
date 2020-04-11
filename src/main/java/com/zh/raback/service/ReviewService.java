@@ -1,10 +1,14 @@
 package com.zh.raback.service;
 
+import com.zh.raback.domain.Review;
 import com.zh.raback.service.dto.ReviewDTO;
 
+import com.zh.raback.web.rest.ReviewResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -42,4 +46,13 @@ public interface ReviewService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+
+    void updateBatchStatus(List<Long> ids, String status);
+
+    void deleteIds(List<Long> ids);
+
+    List<ReviewDTO> findAllInIds(List<Long> ids);
+
+    Page<ReviewDTO> findAllBySearch(Specification<Review> specification, Pageable pageable);
 }

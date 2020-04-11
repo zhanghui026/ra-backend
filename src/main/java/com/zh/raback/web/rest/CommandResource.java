@@ -1,9 +1,12 @@
 package com.zh.raback.web.rest;
 
+import com.google.common.base.Splitter;
 import com.zh.raback.domain.Command;
 import com.zh.raback.domain.Customer;
 import com.zh.raback.service.CommandService;
 import com.zh.raback.service.dto.CustomerDTO;
+import com.zh.raback.service.dto.ProductDTO;
+import com.zh.raback.util.RsqlUtils;
 import com.zh.raback.web.rest.errors.BadRequestAlertException;
 import com.zh.raback.service.dto.CommandDTO;
 
@@ -29,8 +32,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * REST controller for managing {@link com.zh.raback.domain.Command}.
@@ -127,12 +130,22 @@ public class CommandResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of commands in body.
      */
     @GetMapping("/commands")
-    public ResponseEntity<List<CommandDTO>> getAllCommands(@RequestParam(value = "search",required = false) String search, Pageable pageable) {
+    public ResponseEntity<List<CommandDTO>> getAllCommands(@RequestParam(value = "search",required = false) String search,
+                                                           @RequestParam(value = "ids",required = false) List<Long> ids,
+                                                           Pageable pageable) {
         log.debug("REST request to get a page of Commands");
+        if (ids != null) {
+            List<CommandDTO> list = commandService.findAllInIds(ids);
+            return ResponseEntity.ok().body(list);
+        } else if (StringUtils.isNotBlank(search)){
 
-        if (StringUtils.isNotBlank(search)){
+            List<String> qSearchFieldList = new ArrayList<>();
+            qSearchFieldList.add("reference");
+            Set<String> starFields = new HashSet<>();
 
-            Node rootNode = new RSQLParser().parse(search);
+            String wrapperSearch = RsqlUtils.search2rsqlStr(search,qSearchFieldList,starFields);
+
+            Node rootNode = new RSQLParser().parse(wrapperSearch);
             Specification<Command> specification = rootNode.accept(new CustomRsqlVisitor<Command>());
             Page<CommandDTO> page = commandService.findAllBySearch(specification, pageable);
             HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
@@ -153,7 +166,7 @@ public class CommandResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/commands")
-    public ResponseEntity<Void> deleteCommands(@RequestParam(value = "id") List<Long> ids) {
+    public ResponseEntity<Void> deleteAll(@RequestParam(value = "id") List<Long> ids) {
         log.debug("REST request to delete commands : {}", ids);
         commandService.deleteIds(ids);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, ids.toString())).build();

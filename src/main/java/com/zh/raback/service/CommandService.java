@@ -3,6 +3,7 @@ package com.zh.raback.service;
 import com.zh.raback.domain.Command;
 import com.zh.raback.service.dto.CommandDTO;
 
+import com.zh.raback.service.dto.ProductDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -49,4 +50,6 @@ public interface CommandService {
     Page<CommandDTO> findAllBySearch(Specification<Command> specification, Pageable pageable);
 
     void deleteIds(List<Long> ids);
+
+    List<CommandDTO> findAllInIds(List<Long> ids);
 }

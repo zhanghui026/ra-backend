@@ -11,8 +11,13 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring", uses = {})
 public interface InvoiceMapper extends EntityMapper<InvoiceDTO, Invoice> {
+    @Mapping(target = "date",dateFormat = "yyyy-MM-dd")
+    @Override
+    InvoiceDTO toDto(Invoice entity);
 
-
+    @Mapping(target = "date",dateFormat = "yyyy-MM-dd")
+    @Override
+    Invoice toEntity(InvoiceDTO dto);
 
     default Invoice fromId(Long id) {
         if (id == null) {

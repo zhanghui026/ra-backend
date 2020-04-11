@@ -1,17 +1,27 @@
 package com.zh.raback.web.rest;
 
+import com.zh.raback.domain.Product;
+import com.zh.raback.domain.Review;
 import com.zh.raback.service.ReviewService;
+import com.zh.raback.service.dto.ProductDTO;
 import com.zh.raback.web.rest.errors.BadRequestAlertException;
 import com.zh.raback.service.dto.ReviewDTO;
 
+import com.zh.raback.web.rest.rsql.CustomRsqlVisitor;
+import cz.jirutka.rsql.parser.RSQLParser;
+import cz.jirutka.rsql.parser.ast.Node;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -90,11 +100,24 @@ public class ReviewResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of reviews in body.
      */
     @GetMapping("/reviews")
-    public ResponseEntity<List<ReviewDTO>> getAllReviews(Pageable pageable) {
+    public ResponseEntity<List<ReviewDTO>> getAllReviews(@RequestParam(value = "search",required = false) String search,
+                                                         @RequestParam(value = "ids",required = false) List<Long> ids,Pageable pageable) {
         log.debug("REST request to get a page of Reviews");
-        Page<ReviewDTO> page = reviewService.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
+        if (ids != null) {
+            List<ReviewDTO> list = reviewService.findAllInIds(ids);
+            return ResponseEntity.ok().body(list);
+        }else if (StringUtils.isNotBlank(search)){
+
+            Node rootNode = new RSQLParser().parse(search);
+            Specification<Review> specification = rootNode.accept(new CustomRsqlVisitor<Review>());
+            Page<ReviewDTO> page = reviewService.findAllBySearch(specification, pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+            return ResponseEntity.ok().headers(headers).body(page.getContent());
+        } else {
+            Page<ReviewDTO> page = reviewService.findAll(pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+            return ResponseEntity.ok().headers(headers).body(page.getContent());
+        }
     }
 
     /**
@@ -122,4 +145,47 @@ public class ReviewResource {
         reviewService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+
+
+
+    /**
+     * {@code DELETE  /reviews/:id} : delete the "id" review.
+     *
+     * @param ids the id of the reviewDTO to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @DeleteMapping("/reviews")
+    public ResponseEntity<Void> deleteAll(@PathVariable List<Long> ids) {
+        log.debug("REST request to delete Review : {}", ids);
+        reviewService.deleteIds(ids);
+        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, ids.toString())).build();
+    }
+
+
+    /**
+     * {@code POST  /reviews} : Create a new review.
+     *
+     * @param reviewStatus the reviewDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new reviewDTO, or with status {@code 400 (Bad Request)} if the review has already an ID.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PostMapping("/reviews/batch-update")
+    public ResponseEntity<DefaultSucc> updateReviewStatus(@RequestBody BatchReviewStatus reviewStatus) throws URISyntaxException {
+        log.debug("REST request to save Review : {}", reviewStatus);
+        reviewService.updateBatchStatus(reviewStatus.ids,reviewStatus.status);
+        return ResponseEntity.ok(new DefaultSucc(reviewStatus));
+    }
+
+    @Data
+    @AllArgsConstructor
+    public static class DefaultSucc {
+        private BatchReviewStatus data;
+    }
+
+    @Data
+    public static class BatchReviewStatus {
+        private List<Long> ids;
+        private String status;
+    }
+
 }

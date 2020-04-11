@@ -1,10 +1,13 @@
 package com.zh.raback.service;
 
+import com.zh.raback.domain.Invoice;
 import com.zh.raback.service.dto.InvoiceDTO;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -42,4 +45,10 @@ public interface InvoiceService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    List<InvoiceDTO> findAllInIds(List<Long> ids);
+
+    Page<InvoiceDTO> findAllBySearch(Specification<Invoice> specification, Pageable pageable);
+
+    void deleteIds(List<Long> ids);
 }

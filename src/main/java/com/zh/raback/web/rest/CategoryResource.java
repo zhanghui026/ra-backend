@@ -1,17 +1,29 @@
 package com.zh.raback.web.rest;
 
 import com.zh.raback.domain.Category;
+import com.zh.raback.domain.Command;
 import com.zh.raback.repository.CategoryRepository;
+import com.zh.raback.service.dto.CommandDTO;
 import com.zh.raback.web.rest.errors.BadRequestAlertException;
 
+import com.zh.raback.web.rest.rsql.CustomRsqlVisitor;
+import cz.jirutka.rsql.parser.RSQLParser;
+import cz.jirutka.rsql.parser.ast.Node;
 import io.github.jhipster.web.util.HeaderUtil;
+import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -85,9 +97,26 @@ public class CategoryResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of categories in body.
      */
     @GetMapping("/categories")
-    public List<Category> getAllCategories() {
+    public ResponseEntity<List<Category>> getAllCategories(@RequestParam(value = "search",required = false) String search,
+                                           @RequestParam(value = "ids",required = false) List<Long> ids,
+                                           Pageable pageable) {
         log.debug("REST request to get all Categories");
-        return categoryRepository.findAll();
+        if (ids != null) {
+            List<Category> list = categoryRepository.findAllByIdIn(ids);
+            return ResponseEntity.ok().body(list);
+        } else if (StringUtils.isNotBlank(search)) {
+
+            Node rootNode = new RSQLParser().parse(search);
+            Specification<Category> specification = rootNode.accept(new CustomRsqlVisitor<Category>());
+            Page<Category> page = categoryRepository.findAll(specification, pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+            return ResponseEntity.ok().headers(headers).body(page.getContent());
+        } else {
+
+            Page<Category> page = categoryRepository.findAll(pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+            return ResponseEntity.ok().headers(headers).body(page.getContent());
+        }
     }
 
     /**

@@ -4,6 +4,7 @@ import com.zh.raback.service.CommandService;
 import com.zh.raback.domain.Command;
 import com.zh.raback.repository.CommandRepository;
 import com.zh.raback.service.dto.CommandDTO;
+import com.zh.raback.service.dto.ProductDTO;
 import com.zh.raback.service.mapper.CommandMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link Command}.
@@ -98,5 +100,10 @@ public class CommandServiceImpl implements CommandService {
         for (Long id : ids) {
             delete(id);
         }
+    }
+
+    @Override
+    public List<CommandDTO> findAllInIds(List<Long> ids) {
+        return commandRepository.findAllByIdIn(ids).stream().map(commandMapper::toDto).collect(Collectors.toList());
     }
 }

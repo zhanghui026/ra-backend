@@ -10,10 +10,13 @@ import org.slf4j.LoggerFactory;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link Review}.
@@ -84,5 +87,33 @@ public class ReviewServiceImpl implements ReviewService {
     public void delete(Long id) {
         log.debug("Request to delete Review : {}", id);
         reviewRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateBatchStatus(List<Long> ids, String status) {
+        log.debug("Request to updateBatchStatus : {} {}", ids, status);
+        List<Review> reviews = reviewRepository.findAllByIdInAndStatusNot(ids,status);
+
+        for (Review review : reviews) {
+            review.setStatus(status);
+        }
+
+        reviewRepository.saveAll(reviews);
+    }
+
+    @Override
+    public void deleteIds(List<Long> ids) {
+        List<Review> allById = reviewRepository.findAllById(ids);
+        reviewRepository.deleteAll(allById);
+    }
+
+    @Override
+    public List<ReviewDTO> findAllInIds(List<Long> ids) {
+        return reviewRepository.findAllById(ids).stream().map(reviewMapper::toDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<ReviewDTO> findAllBySearch(Specification<Review> specification, Pageable pageable) {
+        return reviewRepository.findAll(specification,pageable).map(reviewMapper::toDto);
     }
 }
