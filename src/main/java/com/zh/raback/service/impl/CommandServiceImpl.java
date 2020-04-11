@@ -10,9 +10,11 @@ import org.slf4j.LoggerFactory;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -84,5 +86,17 @@ public class CommandServiceImpl implements CommandService {
     public void delete(Long id) {
         log.debug("Request to delete Command : {}", id);
         commandRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<CommandDTO> findAllBySearch(Specification<Command> specification, Pageable pageable) {
+        return commandRepository.findAll(specification,pageable).map(commandMapper::toDto);
+    }
+
+    @Override
+    public void deleteIds(List<Long> ids) {
+        for (Long id : ids) {
+            delete(id);
+        }
     }
 }

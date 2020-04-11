@@ -1,17 +1,26 @@
 package com.zh.raback.web.rest;
 
+import com.zh.raback.domain.Command;
+import com.zh.raback.domain.Customer;
 import com.zh.raback.service.CommandService;
+import com.zh.raback.service.dto.CustomerDTO;
 import com.zh.raback.web.rest.errors.BadRequestAlertException;
 import com.zh.raback.service.dto.CommandDTO;
 
+import com.zh.raback.web.rest.rsql.CustomRsqlVisitor;
+import cz.jirutka.rsql.parser.RSQLParser;
+import cz.jirutka.rsql.parser.ast.Node;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import org.apache.commons.lang3.StringUtils;
+import org.checkerframework.checker.units.qual.C;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -83,19 +92,7 @@ public class CommandResource {
             .body(result);
     }
 
-    /**
-     * {@code GET  /commands} : get all the commands.
-     *
-     * @param pageable the pagination information.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of commands in body.
-     */
-    @GetMapping("/commands")
-    public ResponseEntity<List<CommandDTO>> getAllCommands(Pageable pageable) {
-        log.debug("REST request to get a page of Commands");
-        Page<CommandDTO> page = commandService.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
+
 
     /**
      * {@code GET  /commands/:id} : get the "id" command.
@@ -121,5 +118,44 @@ public class CommandResource {
         log.debug("REST request to delete Command : {}", id);
         commandService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+
+    /**
+     * {@code GET  /commands} : get all the commands.
+     *
+     * @param pageable the pagination information.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of commands in body.
+     */
+    @GetMapping("/commands")
+    public ResponseEntity<List<CommandDTO>> getAllCommands(@RequestParam(value = "search",required = false) String search, Pageable pageable) {
+        log.debug("REST request to get a page of Commands");
+
+        if (StringUtils.isNotBlank(search)){
+
+            Node rootNode = new RSQLParser().parse(search);
+            Specification<Command> specification = rootNode.accept(new CustomRsqlVisitor<Command>());
+            Page<CommandDTO> page = commandService.findAllBySearch(specification, pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+            return ResponseEntity.ok().headers(headers).body(page.getContent());
+        } else {
+
+            Page<CommandDTO> page = commandService.findAll(pageable);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+            return ResponseEntity.ok().headers(headers).body(page.getContent());
+        }
+    }
+
+
+    /**
+     * {@code DELETE  /posts/:id} : delete the "id" post.
+     *
+     * @param ids the id of the post to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @DeleteMapping("/commands")
+    public ResponseEntity<Void> deleteCommands(@RequestParam(value = "id") List<Long> ids) {
+        log.debug("REST request to delete commands : {}", ids);
+        commandService.deleteIds(ids);
+        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, ids.toString())).build();
     }
 }

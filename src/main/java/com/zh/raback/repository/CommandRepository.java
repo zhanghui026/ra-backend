@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface CommandRepository extends JpaRepository<Command, Long> {
+public interface CommandRepository extends JpaRepository<Command, Long>,JpaSpecificationExecutor<Command> {
 }

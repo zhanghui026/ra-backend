@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link Customer}.
@@ -98,5 +99,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Page<CustomerDTO> findAllBySearch(Specification<Customer> specification, Pageable pageable) {
         return customerRepository.findAll(specification,pageable).map(customerMapper::toDto);
+    }
+
+    @Override
+    public List<CustomerDTO> findAllInIds(List<Long> ids) {
+        return customerRepository.findAllByIdIn(ids).stream().map(customerMapper::toDto).collect(Collectors.toList());
     }
 }

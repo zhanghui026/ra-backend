@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -150,9 +151,17 @@ public class CustomerResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of products in body.
      */
     @GetMapping("/customers")
-    public ResponseEntity<List<CustomerDTO>> getAllProducts(@RequestParam(value = "search",required = false) String search, Pageable pageable) {
+    public ResponseEntity<List<CustomerDTO>> getAllProducts(@RequestParam(value = "search",required = false) String search,
+                                                            @RequestParam(value = "ids",required = false) List<Long> ids,
+                                                            Pageable pageable) {
         log.debug("REST request to get a page of Products");
-        if (StringUtils.isNotBlank(search)){
+        if (ids != null && ids.size() > 0) {
+
+                List<CustomerDTO> list = customerService.findAllInIds(ids);
+                return ResponseEntity.ok().body(list);
+
+
+        }else if (StringUtils.isNotBlank(search)){
 
             Node rootNode = new RSQLParser().parse(search);
             Specification<Customer> specification = rootNode.accept(new CustomRsqlVisitor<Customer>());

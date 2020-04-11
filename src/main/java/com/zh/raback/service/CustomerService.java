@@ -49,4 +49,6 @@ public interface CustomerService {
     void deleteIds(List<Long> ids);
 
     Page<CustomerDTO> findAllBySearch(Specification<Customer> specification, Pageable pageable);
+
+    List<CustomerDTO> findAllInIds(List<Long> ids) ;
 }
