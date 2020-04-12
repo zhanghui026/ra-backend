@@ -2,6 +2,7 @@ package com.zh.raback.web.rest;
 
 import com.zh.raback.domain.Customer;
 import com.zh.raback.service.CustomerService;
+import com.zh.raback.util.RsqlUtils;
 import com.zh.raback.web.rest.errors.BadRequestAlertException;
 import com.zh.raback.service.dto.CustomerDTO;
 
@@ -26,9 +27,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * REST controller for managing {@link com.zh.raback.domain.Customer}.
@@ -162,8 +161,22 @@ public class CustomerResource {
 
 
         }else if (StringUtils.isNotBlank(search)){
+            List<String> qSearchFieldList = new ArrayList<>();
+            qSearchFieldList.add("firstName");
+            qSearchFieldList.add("lastName");
+            qSearchFieldList.add("email");
+            qSearchFieldList.add("address");
+            qSearchFieldList.add("city");
 
-            Node rootNode = new RSQLParser().parse(search);
+            Set<String> starFields = new HashSet<>();
+            starFields.add("firstName");
+            starFields.add("lastName");
+            starFields.add("email");
+            starFields.add("address");
+            starFields.add("city");
+
+            String wrapperSearch = RsqlUtils.search2rsqlStr(search,qSearchFieldList,starFields);
+            Node rootNode = new RSQLParser().parse(wrapperSearch);
             Specification<Customer> specification = rootNode.accept(new CustomRsqlVisitor<Customer>());
             Page<CustomerDTO> page = customerService.findAllBySearch(specification, pageable);
             HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);

@@ -23,6 +23,9 @@ public class GenericRsqlSpecification<T> implements Specification<T> {
     private List<String> arguments;
     private static final String DATE_PATTERN = "yyyy-MM-dd"; //ISO 8601
     private static final String DATE_TIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss"; //ISO 8601
+    private static final String BOOL_TRUE="true";
+    private static final String BOOL_FALSE="false";
+
 
     public GenericRsqlSpecification(final String property, final ComparisonOperator operator, final List<String> arguments) {
         super();
@@ -39,8 +42,13 @@ public class GenericRsqlSpecification<T> implements Specification<T> {
 
         case EQUAL: {
 
-            if (argument instanceof String) {
-                if (isDateType(argument.toString())){
+           if (argument instanceof String) {
+               if (isBoolType(argument.toString()))
+               {
+                   Boolean b = getBoolean(argument.toString());
+                   return builder.equal(root.get(property),b);
+
+               } else if (isDateType(argument.toString())){
                     return builder.equal(root.get(property),parseDate(argument.toString()));
                 } else {
                     return builder.like(root.get(property), argument.toString().replace('*', '%'));
@@ -52,8 +60,15 @@ public class GenericRsqlSpecification<T> implements Specification<T> {
             }
         }
         case NOT_EQUAL: {
+
             if (argument instanceof String) {
-                if (isDateType(argument.toString())){
+                if (isBoolType(argument.toString()))
+                {
+                    Boolean b = getBoolean(argument.toString());
+                    return builder.notEqual(root.get(property),b);
+
+                }
+                else  if (isDateType(argument.toString())){
                     return builder.notEqual(root.get(property),parseDate(argument.toString()));
                 } else {
                     return builder.notLike(root.<String>get(property), argument.toString().replace('*', '%'));
@@ -65,28 +80,41 @@ public class GenericRsqlSpecification<T> implements Specification<T> {
             }
         }
         case GREATER_THAN: {
-            if (isDateType(argument.toString())){
+            if (argument != null && isBoolType(argument.toString())){
+                return builder.greaterThan(root.<Boolean>get(property),getBoolean(argument.toString()));
+            }
+            else if (isDateType(argument.toString())){
                 return builder.greaterThan(root.<Date>get(property),parseDate(argument.toString()));
             } else {
                 return builder.greaterThan(root.<String>get(property), argument.toString());
             }
         }
         case GREATER_THAN_OR_EQUAL: {
-            if (isDateType(argument.toString())){
+
+            if (argument != null && isBoolType(argument.toString())){
+                return builder.greaterThanOrEqualTo(root.<Boolean>get(property),getBoolean(argument.toString()));
+            }
+            else if (isDateType(argument.toString())){
                 return builder.greaterThanOrEqualTo(root.get(property),parseDate(argument.toString()));
             } else {
                 return builder.greaterThanOrEqualTo(root.<String>get(property), argument.toString());
             }
         }
         case LESS_THAN: {
-            if (isDateType(argument.toString())){
+            if (argument != null && isBoolType(argument.toString())){
+                return builder.lessThan(root.<Boolean>get(property),getBoolean(argument.toString()));
+            }
+            else if (isDateType(argument.toString())){
                 return builder.lessThan(root.get(property),parseDate(argument.toString()));
             } else {
                 return builder.lessThan(root.<String>get(property), argument.toString());
             }
         }
         case LESS_THAN_OR_EQUAL: {
-            if (isDateType(argument.toString())){
+            if (argument != null && isBoolType(argument.toString())){
+                return builder.lessThanOrEqualTo(root.<Boolean>get(property),getBoolean(argument.toString()));
+            }
+            else if (isDateType(argument.toString())){
                 return builder.lessThanOrEqualTo(root.get(property),parseDate(argument.toString()));
             } else {
                 return builder.lessThanOrEqualTo(root.<String>get(property), argument.toString());
@@ -128,6 +156,30 @@ public class GenericRsqlSpecification<T> implements Specification<T> {
             return new SimpleDateFormat(DATE_PATTERN).parse(argument);
         } catch (ParseException ex1) {
             throw new IllegalArgumentException(argument);
+        }
+    }
+
+
+    private Boolean getBoolean(String argument){
+        if (argument.equals(BOOL_TRUE)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isBoolType(String argument){
+        if (StringUtils.isNotBlank(argument)){
+            if (argument.equals("true")){
+                return true;
+            } else if (argument.equals("false")){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }else {
+            return false;
         }
     }
 
