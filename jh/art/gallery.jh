@@ -1,0 +1,17 @@
+/**
+ * The Entity entity.
+ * @author A true hipster
+ */
+entity ExhibitionGalley {
+    exhibitionId Long
+    paintingId Long
+}
+
+
+entity LoginGallery {
+    paintingId Long
+}
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination

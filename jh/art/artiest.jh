@@ -1,0 +1,38 @@
+/**
+ * The Artist entity.艺术家
+ * @author A true hipster
+ */
+entity Artist {
+    /** author name*/
+    name String
+    /** russian name*/
+    rsName String
+    /**英语名*/
+    enName String
+    /** 头像 */
+    avatar String
+    /**国籍*/
+    citizenship String
+    /**年代*/
+    bornAge String
+    sentence String
+    rsSentence String
+    enSentence String
+    /**画家简介*/
+    brief String
+    /**俄语简介*/
+    rsBrief String
+    enBrief String
+    /**画家详细介绍*/
+    artInfo String
+    rsArtInfo String
+    enArtInfo String
+    /**创建日期*/
+    createDate Instant
+    /**修改日期*/
+    updateDate Instant
+}
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination

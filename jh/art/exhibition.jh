@@ -1,0 +1,29 @@
+/**
+ * The 展览
+ * @author A true hipster
+ */
+entity Exhibition {
+    /** name */
+    name String
+    rsName String
+    enName String
+    fullName String
+    rsFullName String
+    enFullName String
+    phoneNum String
+    contactPerson String
+    createDate Date
+    updateDate Date
+    startDate Date
+    endDate Date
+    mainImg String
+    isActive Boolean
+    brief String
+    enBrief String
+    rsBrief String
+}
+
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination

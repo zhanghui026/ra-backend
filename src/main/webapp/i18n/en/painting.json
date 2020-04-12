@@ -1,0 +1,66 @@
+{
+  "rabackApp": {
+    "painting": {
+      "home": {
+        "title": "Paintings",
+        "createLabel": "Create a new Painting",
+        "createOrEditLabel": "Create or edit a Painting",
+        "notFound": "No Paintings found"
+      },
+      "created": "A new Painting is created with identifier {{ param }}",
+      "updated": "A Painting is updated with identifier {{ param }}",
+      "deleted": "A Painting is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Painting {{ id }}?"
+      },
+      "detail": {
+        "title": "Painting"
+      },
+      "name": "Name",
+      "rsName": "Rs Name",
+      "enName": "En Name",
+      "artistId": "Artist Id",
+      "materialId": "Material Id",
+      "artTypeId": "Art Type Id",
+      "museumId": "Museum Id",
+      "age": "Age",
+      "tags": "Tags",
+      "width": "Width",
+      "height": "Height",
+      "rawImg": "Raw Img",
+      "webImg": "Web Img",
+      "thumbnailImg": "Thumbnail Img",
+      "pin": "Pin",
+      "pinImg": "Pin Img",
+      "reference": "Reference",
+      "categoryStatusId": "Category Status Id",
+      "sentence": "Sentence",
+      "rsSentence": "Rs Sentence",
+      "enSentence": "En Sentence",
+      "brief": "Brief",
+      "rsBrief": "Rs Brief",
+      "enBrief": "En Brief",
+      "info": "Info",
+      "rsArtInfo": "Rs Art Info",
+      "enArtInfo": "En Art Info",
+      "rating": "Rating",
+      "createDate": "Create Date",
+      "updateDate": "Update Date",
+      "useArtistInfo": "Use Artist Info",
+      "help": {
+        "name": "painting name",
+        "rsName": "painting rsname",
+        "enName": "painting enname",
+        "artistId": "artistId",
+        "materialId": "材质material id",
+        "artTypeId": "类型",
+        "museumId": "艺术馆id",
+        "age": "创作年代",
+        "tags": "标签",
+        "brief": "画家简介",
+        "rsBrief": "俄语简介",
+        "info": "画作详细介绍"
+      }
+    }
+  }
+}

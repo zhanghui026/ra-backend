@@ -1,0 +1,97 @@
+{
+    "name": "Artiest",
+    "fields": [
+        {
+            "fieldName": "name",
+            "javadoc": "author name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rsName",
+            "javadoc": "russian name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enName",
+            "javadoc": "英语名",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "avatar",
+            "javadoc": "头像",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "citizenship",
+            "javadoc": "国籍",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bornAge",
+            "javadoc": "年代",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sentence",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rsSentence",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enSentence",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "brief",
+            "javadoc": "画家简介",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rsBrief",
+            "javadoc": "俄语简介",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enBrief",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "artInfo",
+            "javadoc": "画家详细介绍",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rsArtInfo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enArtInfo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createDate",
+            "javadoc": "创建日期",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updateDate",
+            "javadoc": "修改日期",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200412113600",
+    "javadoc": "The Artiest entity.艺术家\\n@author A true hipster",
+    "entityTableName": "artiest",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

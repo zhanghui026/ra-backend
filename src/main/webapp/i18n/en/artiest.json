@@ -1,0 +1,51 @@
+{
+  "rabackApp": {
+    "artist": {
+      "home": {
+        "title": "Artists",
+        "createLabel": "Create a new Artist",
+        "createOrEditLabel": "Create or edit a Artist",
+        "notFound": "No Artists found"
+      },
+      "created": "A new Artist is created with identifier {{ param }}",
+      "updated": "A Artist is updated with identifier {{ param }}",
+      "deleted": "A Artist is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Artist {{ id }}?"
+      },
+      "detail": {
+        "title": "Artist"
+      },
+      "name": "Name",
+      "rsName": "Rs Name",
+      "enName": "En Name",
+      "avatar": "Avatar",
+      "citizenship": "Citizenship",
+      "bornAge": "Born Age",
+      "sentence": "Sentence",
+      "rsSentence": "Rs Sentence",
+      "enSentence": "En Sentence",
+      "brief": "Brief",
+      "rsBrief": "Rs Brief",
+      "enBrief": "En Brief",
+      "artInfo": "Art Info",
+      "rsArtInfo": "Rs Art Info",
+      "enArtInfo": "En Art Info",
+      "createDate": "Create Date",
+      "updateDate": "Update Date",
+      "help": {
+        "name": "author name",
+        "rsName": "russian name",
+        "enName": "英语名",
+        "avatar": "头像",
+        "citizenship": "国籍",
+        "bornAge": "年代",
+        "brief": "画家简介",
+        "rsBrief": "俄语简介",
+        "artInfo": "画家详细介绍",
+        "createDate": "创建日期",
+        "updateDate": "修改日期"
+      }
+    }
+  }
+}

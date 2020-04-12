@@ -16,6 +16,8 @@
         "command": "Command",
         "invoice": "Invoice",
         "review": "Review",
+        "artist": "Artist",
+        "painting": "Painting",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

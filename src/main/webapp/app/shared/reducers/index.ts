@@ -48,6 +48,14 @@ import invoice, {
 import review, {
   ReviewState
 } from 'app/entities/review/review.reducer';
+// prettier-ignore
+import artist, {
+  ArtistState
+} from 'app/entities/artist/artist.reducer';
+// prettier-ignore
+import painting, {
+  PaintingState
+} from 'app/entities/painting/painting.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -70,6 +78,8 @@ export interface IRootState {
   readonly command: CommandState;
   readonly invoice: InvoiceState;
   readonly review: ReviewState;
+  readonly artist: ArtistState;
+  readonly painting: PaintingState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -94,6 +104,8 @@ const rootReducer = combineReducers<IRootState>({
   command,
   invoice,
   review,
+  artist,
+  painting,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar
 });

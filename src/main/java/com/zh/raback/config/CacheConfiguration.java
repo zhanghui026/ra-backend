@@ -2,6 +2,7 @@ package com.zh.raback.config;
 
 import java.time.Duration;
 
+import com.zh.raback.domain.Artist;
 import org.ehcache.config.builders.*;
 import org.ehcache.jsr107.Eh107Configuration;
 
@@ -51,6 +52,8 @@ public class CacheConfiguration {
             createCache(cm, com.zh.raback.domain.Command.class.getName());
             createCache(cm, com.zh.raback.domain.Invoice.class.getName());
             createCache(cm, com.zh.raback.domain.Review.class.getName());
+            createCache(cm, Artist.class.getName());
+            createCache(cm, com.zh.raback.domain.Painting.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

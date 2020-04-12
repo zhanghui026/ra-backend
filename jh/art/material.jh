@@ -1,0 +1,25 @@
+/**
+ * The Material entity.
+ * @author A true nr
+ */
+entity Material {
+
+    name String
+    rsName String
+    enName String
+}
+
+
+entity ArtType {
+
+    name String
+    rsName String
+    enName String
+}
+
+
+entity CategoryStatus {
+     name String
+    rsName String
+    enName String
+}

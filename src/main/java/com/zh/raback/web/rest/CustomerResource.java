@@ -142,7 +142,6 @@ public class CustomerResource {
     }
 
 
-
     /**
      * {@code GET  /products} : get all the products.
      *
@@ -150,17 +149,15 @@ public class CustomerResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of products in body.
      */
     @GetMapping("/customers")
-    public ResponseEntity<List<CustomerDTO>> getAllProducts(@RequestParam(value = "search",required = false) String search,
-                                                            @RequestParam(value = "ids",required = false) List<Long> ids,
+    public ResponseEntity<List<CustomerDTO>> getAllProducts(@RequestParam(value = "search", required = false) String search,
+                                                            @RequestParam(value = "ids", required = false) List<Long> ids,
                                                             Pageable pageable) {
         log.debug("REST request to get a page of Products");
         if (ids != null) {
 
-                List<CustomerDTO> list = customerService.findAllInIds(ids);
-                return ResponseEntity.ok().body(list);
-
-
-        }else if (StringUtils.isNotBlank(search)){
+            List<CustomerDTO> list = customerService.findAllInIds(ids);
+            return ResponseEntity.ok().body(list);
+        } else if (StringUtils.isNotBlank(search)) {
             List<String> qSearchFieldList = new ArrayList<>();
             qSearchFieldList.add("firstName");
             qSearchFieldList.add("lastName");
@@ -175,7 +172,7 @@ public class CustomerResource {
             starFields.add("address");
             starFields.add("city");
 
-            String wrapperSearch = RsqlUtils.search2rsqlStr(search,qSearchFieldList,starFields);
+            String wrapperSearch = RsqlUtils.search2rsqlStr(search, qSearchFieldList, starFields);
             Node rootNode = new RSQLParser().parse(wrapperSearch);
             Specification<Customer> specification = rootNode.accept(new CustomRsqlVisitor<Customer>());
             Page<CustomerDTO> page = customerService.findAllBySearch(specification, pageable);
@@ -188,7 +185,6 @@ public class CustomerResource {
         }
 
     }
-
 
 
     /**

@@ -1,0 +1,44 @@
+/**
+ * The AuthorAttach entity.
+ * @author A true hipster
+ */
+entity ArtiestAttach {
+    /** 艺术家 */
+    artiestId Long
+    /** 附件id*/
+    fileNo String
+    /** 创建时间*/
+    createDate Date
+    /** 修改时间*/
+    updateDate Date
+}
+
+
+entity ArtGalleryAttach {
+    /** 艺术家 */
+    artGalleryId Long
+    /** 附件id*/
+    fileNo String
+    /** 创建时间*/
+    createDate Date
+    /** 修改时间*/
+    updateDate Date
+}
+
+
+entity ExhibitionAttach {
+    /** 艺术家 */
+    exhibitionId Long
+    /** 附件id*/
+    fileNo String
+    /** 创建时间*/
+    createDate Date
+    /** 修改时间*/
+    updateDate Date
+}
+
+
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination

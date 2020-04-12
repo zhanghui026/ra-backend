@@ -1,0 +1,27 @@
+/**
+ * The 艺术馆
+ * @author A true hipster
+ */
+entity Museum {
+    /** name */
+    name String
+    rsName String
+    enName String
+    fullName String
+    rsFullName String
+    enFullName String
+    address String
+    rsAddress String
+    enAddress String
+    brief String
+    enBrief String
+    rsBrief String
+    phoneNum String
+    contactPerson String
+    createDate Date
+    updateDate Date
+    mainImg String
+}
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination

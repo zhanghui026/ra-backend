@@ -1,0 +1,12 @@
+/**
+ * The ArtTimeLine entity.
+ * @author A true hipster
+ */
+entity ArtTimeLine {
+    artiestId Long
+    status String
+    createDate Date
+}
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination

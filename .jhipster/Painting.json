@@ -1,0 +1,159 @@
+{
+    "name": "Painting",
+    "fields": [
+        {
+            "fieldName": "name",
+            "javadoc": "painting name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rsName",
+            "javadoc": "painting rsname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enName",
+            "javadoc": "painting enname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "artistId",
+            "javadoc": "artistId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "materialId",
+            "javadoc": "材质material id",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "artTypeId",
+            "javadoc": "类型",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "museumId",
+            "javadoc": "艺术馆id",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "age",
+            "javadoc": "创作年代",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tags",
+            "javadoc": "标签",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "width",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "height",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "rawImg",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "webImg",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "thumbnailImg",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pin",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pinImg",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "reference",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "categoryStatusId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "sentence",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rsSentence",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enSentence",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "brief",
+            "javadoc": "画家简介",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rsBrief",
+            "javadoc": "俄语简介",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enBrief",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "info",
+            "javadoc": "画作详细介绍",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rsArtInfo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enArtInfo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rating",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updateDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "useArtistInfo",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200412114500",
+    "javadoc": "The Painting\\nentity.\\n@author A true hipster",
+    "entityTableName": "painting",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
+}
