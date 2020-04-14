@@ -85,4 +85,11 @@ public class FileManagerServiceImpl implements FileManagerService {
         log.debug("Request to delete FileManager : {}", id);
         fileManagerRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<FileManagerDTO> findByFileNo(String imageNo) {
+        log.debug("Request to findByFileNo: {}", imageNo);
+
+        return fileManagerRepository.findByFileNo(imageNo).map(fileManagerMapper::toDto);
+    }
 }

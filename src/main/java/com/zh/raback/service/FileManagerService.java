@@ -42,4 +42,6 @@ public interface FileManagerService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    Optional<FileManagerDTO> findByFileNo(String imageNo);
 }

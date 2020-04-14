@@ -1,7 +1,9 @@
 package com.zh.raback.web.rest;
 
 import com.zh.raback.domain.Painting;
+import com.zh.raback.service.FileManagerService;
 import com.zh.raback.service.PaintingService;
+import com.zh.raback.service.dto.FileManagerDTO;
 import com.zh.raback.util.RsqlUtils;
 import com.zh.raback.web.rest.errors.BadRequestAlertException;
 import com.zh.raback.service.dto.PaintingDTO;
@@ -45,9 +47,14 @@ public class PaintingResource {
 
     private final PaintingService paintingService;
 
-    public PaintingResource(PaintingService paintingService) {
+    private final FileManagerService fileManagerService;
+
+
+    public PaintingResource(PaintingService paintingService,FileManagerService fileManagerService) {
         this.paintingService = paintingService;
+        this.fileManagerService = fileManagerService;
     }
+
 
     /**
      * {@code POST  /paintings} : Create a new painting.
@@ -83,10 +90,27 @@ public class PaintingResource {
         if (paintingDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+
+
+        changeImg(paintingDTO);
+
+
         PaintingDTO result = paintingService.save(paintingDTO);
+
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, paintingDTO.getId().toString()))
             .body(result);
+    }
+
+    private void changeImg(@RequestBody PaintingDTO paintingDTO) {
+        if (StringUtils.isNotBlank(paintingDTO.getImageNo())) {
+            Optional<FileManagerDTO> imageNo = fileManagerService.findByFileNo(paintingDTO.getImageNo());
+            imageNo.ifPresent(file -> {
+                paintingDTO.setRawImg(file.getDefaultUrl());
+                paintingDTO.setThumbnailImg(file.getDefaultUrl());
+                paintingDTO.setWebImg(file.getDefaultUrl());
+            });
+        }
     }
 
     /**

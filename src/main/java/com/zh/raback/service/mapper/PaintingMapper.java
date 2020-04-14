@@ -14,6 +14,13 @@ public interface PaintingMapper extends EntityMapper<PaintingDTO, Painting> {
 
 
 
+//    @Override
+//    PaintingDTO toDto(Painting entity);
+//
+//
+//    @Override
+//    Painting toEntity(PaintingDTO dto);
+
     default Painting fromId(Long id) {
         if (id == null) {
             return null;

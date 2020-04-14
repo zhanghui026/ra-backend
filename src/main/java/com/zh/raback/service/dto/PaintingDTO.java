@@ -2,6 +2,7 @@ package com.zh.raback.service.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
 import java.time.Instant;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -12,7 +13,7 @@ import java.util.Objects;
  */
 @ApiModel(description = "The Painting\nentity.\n@author A true hipster")
 public class PaintingDTO implements Serializable {
-    
+
     private Long id;
 
     /**
@@ -126,7 +127,17 @@ public class PaintingDTO implements Serializable {
     @NotNull
     private Boolean useArtistInfo;
 
-    
+
+    public String getImageNo() {
+        return imageNo;
+    }
+
+    public void setImageNo(String imageNo) {
+        this.imageNo = imageNo;
+    }
+
+    private String imageNo;
+
     public Long getId() {
         return id;
     }
