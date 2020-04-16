@@ -26,6 +26,7 @@ public class MockResource {
 
     @PostMapping("/artmockData")
     public void initArt(){
+        artMockService.mockArtist();
         artMockService.mockPainting();
     }
 

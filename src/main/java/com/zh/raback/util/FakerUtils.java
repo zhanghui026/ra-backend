@@ -73,11 +73,17 @@ public class FakerUtils {
 
 
     public static void main(String[] args) {
+        System.out.println(Faker.instance(Locale.CHINA).name().name());
+        System.out.println(Faker.instance(Locale.forLanguageTag("ru")).name().name());
+        System.out.println(Faker.instance().name().name());
+        System.out.println(Faker.instance(Locale.CHINA).avatar().image());
         System.out.println(Faker.instance().avatar().image());
-
-                        Date firstSeen = FakerUtils.randomDate(null, null);
-                Date lastSeen = FakerUtils.randomDate(firstSeen, null);
-        System.out.println(firstSeen + " - " + lastSeen);
+        System.out.println(Faker.instance().avatar().image());
+//        System.out.println(Faker.instance().avatar().image());
+//
+//                        Date firstSeen = FakerUtils.randomDate(null, null);
+//                Date lastSeen = FakerUtils.randomDate(firstSeen, null);
+//        System.out.println(firstSeen + " - " + lastSeen);
 //
 //
 //        for (int i = 0 ;i < 50000 ; i++) {

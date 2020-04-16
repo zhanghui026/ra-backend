@@ -74,7 +74,7 @@ public class Artist implements Serializable {
     private String brief;
 
     /**
-     * 俄语简介
+     * 俄语简介ri
      */
     @Column(name = "rs_brief")
     private String rsBrief;
