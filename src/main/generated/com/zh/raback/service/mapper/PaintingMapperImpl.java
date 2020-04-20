@@ -9,108 +9,108 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-04-15T03:23:06+0800",
+    date = "2020-04-18T22:53:02+0800",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.3 (Oracle Corporation)"
 )
 @Component
 public class PaintingMapperImpl implements PaintingMapper {
 
     @Override
-    public Painting toEntity(PaintingDTO arg0) {
-        if ( arg0 == null ) {
+    public Painting toEntity(PaintingDTO dto) {
+        if ( dto == null ) {
             return null;
         }
 
         Painting painting = new Painting();
 
-        painting.setId( arg0.getId() );
-        painting.setName( arg0.getName() );
-        painting.setRsName( arg0.getRsName() );
-        painting.setEnName( arg0.getEnName() );
-        painting.setArtistId( arg0.getArtistId() );
-        painting.setMaterialId( arg0.getMaterialId() );
-        painting.setArtTypeId( arg0.getArtTypeId() );
-        painting.setMuseumId( arg0.getMuseumId() );
-        painting.setAge( arg0.getAge() );
-        painting.setTags( arg0.getTags() );
-        painting.setWidth( arg0.getWidth() );
-        painting.setHeight( arg0.getHeight() );
-        painting.setRawImg( arg0.getRawImg() );
-        painting.setWebImg( arg0.getWebImg() );
-        painting.setThumbnailImg( arg0.getThumbnailImg() );
-        painting.setPin( arg0.getPin() );
-        painting.setPinImg( arg0.getPinImg() );
-        painting.setReference( arg0.getReference() );
-        painting.setCategoryStatusId( arg0.getCategoryStatusId() );
-        painting.setSentence( arg0.getSentence() );
-        painting.setRsSentence( arg0.getRsSentence() );
-        painting.setEnSentence( arg0.getEnSentence() );
-        painting.setBrief( arg0.getBrief() );
-        painting.setRsBrief( arg0.getRsBrief() );
-        painting.setEnBrief( arg0.getEnBrief() );
-        painting.setInfo( arg0.getInfo() );
-        painting.setRsArtInfo( arg0.getRsArtInfo() );
-        painting.setEnArtInfo( arg0.getEnArtInfo() );
-        painting.setRating( arg0.getRating() );
-        painting.setCreateDate( arg0.getCreateDate() );
-        painting.setUpdateDate( arg0.getUpdateDate() );
-        painting.setUseArtistInfo( arg0.isUseArtistInfo() );
+        painting.setId( dto.getId() );
+        painting.setName( dto.getName() );
+        painting.setRsName( dto.getRsName() );
+        painting.setEnName( dto.getEnName() );
+        painting.setArtistId( dto.getArtistId() );
+        painting.setMaterialId( dto.getMaterialId() );
+        painting.setArtTypeId( dto.getArtTypeId() );
+        painting.setMuseumId( dto.getMuseumId() );
+        painting.setAge( dto.getAge() );
+        painting.setTags( dto.getTags() );
+        painting.setWidth( dto.getWidth() );
+        painting.setHeight( dto.getHeight() );
+        painting.setRawImg( dto.getRawImg() );
+        painting.setWebImg( dto.getWebImg() );
+        painting.setThumbnailImg( dto.getThumbnailImg() );
+        painting.setPin( dto.getPin() );
+        painting.setPinImg( dto.getPinImg() );
+        painting.setReference( dto.getReference() );
+        painting.setCategoryStatusId( dto.getCategoryStatusId() );
+        painting.setSentence( dto.getSentence() );
+        painting.setRsSentence( dto.getRsSentence() );
+        painting.setEnSentence( dto.getEnSentence() );
+        painting.setBrief( dto.getBrief() );
+        painting.setRsBrief( dto.getRsBrief() );
+        painting.setEnBrief( dto.getEnBrief() );
+        painting.setInfo( dto.getInfo() );
+        painting.setRsArtInfo( dto.getRsArtInfo() );
+        painting.setEnArtInfo( dto.getEnArtInfo() );
+        painting.setRating( dto.getRating() );
+        painting.setCreateDate( dto.getCreateDate() );
+        painting.setUpdateDate( dto.getUpdateDate() );
+        painting.setUseArtistInfo( dto.isUseArtistInfo() );
 
         return painting;
     }
 
     @Override
-    public PaintingDTO toDto(Painting arg0) {
-        if ( arg0 == null ) {
+    public PaintingDTO toDto(Painting entity) {
+        if ( entity == null ) {
             return null;
         }
 
         PaintingDTO paintingDTO = new PaintingDTO();
 
-        paintingDTO.setId( arg0.getId() );
-        paintingDTO.setName( arg0.getName() );
-        paintingDTO.setRsName( arg0.getRsName() );
-        paintingDTO.setEnName( arg0.getEnName() );
-        paintingDTO.setArtistId( arg0.getArtistId() );
-        paintingDTO.setMaterialId( arg0.getMaterialId() );
-        paintingDTO.setArtTypeId( arg0.getArtTypeId() );
-        paintingDTO.setMuseumId( arg0.getMuseumId() );
-        paintingDTO.setAge( arg0.getAge() );
-        paintingDTO.setTags( arg0.getTags() );
-        paintingDTO.setWidth( arg0.getWidth() );
-        paintingDTO.setHeight( arg0.getHeight() );
-        paintingDTO.setRawImg( arg0.getRawImg() );
-        paintingDTO.setWebImg( arg0.getWebImg() );
-        paintingDTO.setThumbnailImg( arg0.getThumbnailImg() );
-        paintingDTO.setPin( arg0.getPin() );
-        paintingDTO.setPinImg( arg0.getPinImg() );
-        paintingDTO.setReference( arg0.getReference() );
-        paintingDTO.setCategoryStatusId( arg0.getCategoryStatusId() );
-        paintingDTO.setSentence( arg0.getSentence() );
-        paintingDTO.setRsSentence( arg0.getRsSentence() );
-        paintingDTO.setEnSentence( arg0.getEnSentence() );
-        paintingDTO.setBrief( arg0.getBrief() );
-        paintingDTO.setRsBrief( arg0.getRsBrief() );
-        paintingDTO.setEnBrief( arg0.getEnBrief() );
-        paintingDTO.setInfo( arg0.getInfo() );
-        paintingDTO.setRsArtInfo( arg0.getRsArtInfo() );
-        paintingDTO.setEnArtInfo( arg0.getEnArtInfo() );
-        paintingDTO.setRating( arg0.getRating() );
-        paintingDTO.setCreateDate( arg0.getCreateDate() );
-        paintingDTO.setUpdateDate( arg0.getUpdateDate() );
-        paintingDTO.setUseArtistInfo( arg0.isUseArtistInfo() );
+        paintingDTO.setId( entity.getId() );
+        paintingDTO.setName( entity.getName() );
+        paintingDTO.setRsName( entity.getRsName() );
+        paintingDTO.setEnName( entity.getEnName() );
+        paintingDTO.setArtistId( entity.getArtistId() );
+        paintingDTO.setMaterialId( entity.getMaterialId() );
+        paintingDTO.setArtTypeId( entity.getArtTypeId() );
+        paintingDTO.setMuseumId( entity.getMuseumId() );
+        paintingDTO.setAge( entity.getAge() );
+        paintingDTO.setTags( entity.getTags() );
+        paintingDTO.setWidth( entity.getWidth() );
+        paintingDTO.setHeight( entity.getHeight() );
+        paintingDTO.setRawImg( entity.getRawImg() );
+        paintingDTO.setWebImg( entity.getWebImg() );
+        paintingDTO.setThumbnailImg( entity.getThumbnailImg() );
+        paintingDTO.setPin( entity.getPin() );
+        paintingDTO.setPinImg( entity.getPinImg() );
+        paintingDTO.setReference( entity.getReference() );
+        paintingDTO.setCategoryStatusId( entity.getCategoryStatusId() );
+        paintingDTO.setSentence( entity.getSentence() );
+        paintingDTO.setRsSentence( entity.getRsSentence() );
+        paintingDTO.setEnSentence( entity.getEnSentence() );
+        paintingDTO.setBrief( entity.getBrief() );
+        paintingDTO.setRsBrief( entity.getRsBrief() );
+        paintingDTO.setEnBrief( entity.getEnBrief() );
+        paintingDTO.setInfo( entity.getInfo() );
+        paintingDTO.setRsArtInfo( entity.getRsArtInfo() );
+        paintingDTO.setEnArtInfo( entity.getEnArtInfo() );
+        paintingDTO.setRating( entity.getRating() );
+        paintingDTO.setCreateDate( entity.getCreateDate() );
+        paintingDTO.setUpdateDate( entity.getUpdateDate() );
+        paintingDTO.setUseArtistInfo( entity.isUseArtistInfo() );
 
         return paintingDTO;
     }
 
     @Override
-    public List<Painting> toEntity(List<PaintingDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<Painting> toEntity(List<PaintingDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<Painting> list = new ArrayList<Painting>( arg0.size() );
-        for ( PaintingDTO paintingDTO : arg0 ) {
+        List<Painting> list = new ArrayList<Painting>( dtoList.size() );
+        for ( PaintingDTO paintingDTO : dtoList ) {
             list.add( toEntity( paintingDTO ) );
         }
 
@@ -118,13 +118,13 @@ public class PaintingMapperImpl implements PaintingMapper {
     }
 
     @Override
-    public List<PaintingDTO> toDto(List<Painting> arg0) {
-        if ( arg0 == null ) {
+    public List<PaintingDTO> toDto(List<Painting> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<PaintingDTO> list = new ArrayList<PaintingDTO>( arg0.size() );
-        for ( Painting painting : arg0 ) {
+        List<PaintingDTO> list = new ArrayList<PaintingDTO>( entityList.size() );
+        for ( Painting painting : entityList ) {
             list.add( toDto( painting ) );
         }
 

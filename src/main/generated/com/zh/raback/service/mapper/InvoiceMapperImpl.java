@@ -11,20 +11,20 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-04-11T11:20:00+0800",
+    date = "2020-04-18T22:53:02+0800",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.3 (Oracle Corporation)"
 )
 @Component
 public class InvoiceMapperImpl implements InvoiceMapper {
 
     @Override
-    public List<Invoice> toEntity(List<InvoiceDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<Invoice> toEntity(List<InvoiceDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<Invoice> list = new ArrayList<Invoice>( arg0.size() );
-        for ( InvoiceDTO invoiceDTO : arg0 ) {
+        List<Invoice> list = new ArrayList<Invoice>( dtoList.size() );
+        for ( InvoiceDTO invoiceDTO : dtoList ) {
             list.add( toEntity( invoiceDTO ) );
         }
 
@@ -32,13 +32,13 @@ public class InvoiceMapperImpl implements InvoiceMapper {
     }
 
     @Override
-    public List<InvoiceDTO> toDto(List<Invoice> arg0) {
-        if ( arg0 == null ) {
+    public List<InvoiceDTO> toDto(List<Invoice> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<InvoiceDTO> list = new ArrayList<InvoiceDTO>( arg0.size() );
-        for ( Invoice invoice : arg0 ) {
+        List<InvoiceDTO> list = new ArrayList<InvoiceDTO>( entityList.size() );
+        for ( Invoice invoice : entityList ) {
             list.add( toDto( invoice ) );
         }
 
