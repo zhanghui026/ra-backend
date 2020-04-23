@@ -4,7 +4,7 @@
  */
 entity Museum {
     /** name */
-    name String
+    name String required
     rsName String
     enName String
     fullName String
@@ -18,10 +18,10 @@ entity Museum {
     rsBrief String
     phoneNum String
     contactPerson String
-    createDate Date
-    updateDate Date
+    createDate LocalDate
+    updateDate LocalDate
     mainImg String
 }
 dto * with mapstruct
 service * with serviceImpl
-paginate * with pagination
+//paginate * with pagination

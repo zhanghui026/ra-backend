@@ -1,12 +1,10 @@
 package com.zh.raback.service.mock;
 
 import com.github.javafaker.Faker;
-import com.zh.raback.domain.Artist;
-import com.zh.raback.domain.Category;
-import com.zh.raback.domain.Painting;
-import com.zh.raback.domain.Product;
+import com.zh.raback.domain.*;
 import com.zh.raback.repository.ArtistRepository;
 import com.zh.raback.repository.CategoryRepository;
+import com.zh.raback.repository.MuseumRepository;
 import com.zh.raback.repository.PaintingRepository;
 import com.zh.raback.util.CommonUtils;
 import com.zh.raback.util.FakerUtils;
@@ -39,6 +37,9 @@ public class ArtMockService {
     @Autowired
     private ArtistRepository artistRepository;
 
+    @Autowired
+    private MuseumRepository museumRepository;
+
     /**
      * mock generate painting
      */
@@ -61,6 +62,47 @@ public class ArtMockService {
 
         generateArtists();
 
+    }
+
+    public void mockMuseum() {
+        log.debug("Start to mock museum");
+        List<Museum> museums = museumRepository.findAll();
+        museumRepository.deleteAll(museums);
+
+        generateMuseum();
+    }
+
+    private void generateMuseum() {
+        List<Museum> all = IntStream.range(0,3).mapToObj(index -> {
+            Museum museum = new Museum();
+            if (index == 0) {
+                museum.name("北京");
+                museum.fullName("北京乌拉尔艺术馆");
+
+                museum.enName("Beijing Ural Art Museum");
+            } else if (index == 1){
+                museum.name("哈尔滨");
+                museum.fullName("哈尔滨乌拉尔艺术馆");
+                museum.enName(
+                    "Harbin Ural Art Museum");
+            } else {
+                museum.name("上海艺术馆");
+            }
+
+            museum.address(Faker.instance(Locale.CHINA).address().fullAddress())
+                .brief(Faker.instance(Locale.CHINA).lorem().fixedString(30))
+                .phoneNum(Faker.instance(Locale.CHINA).phoneNumber().phoneNumber())
+                .contactPerson(Faker.instance(Locale.CHINA).name().name())
+                .mainImg(Faker.instance().internet().image());
+
+
+
+
+
+            return museum;
+        }).collect(Collectors.toList());
+
+        museumRepository.saveAll(all);
     }
 
     private void generateArtists() {

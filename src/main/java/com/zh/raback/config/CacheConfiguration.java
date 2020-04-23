@@ -54,6 +54,7 @@ public class CacheConfiguration {
             createCache(cm, com.zh.raback.domain.Review.class.getName());
             createCache(cm, Artist.class.getName());
             createCache(cm, com.zh.raback.domain.Painting.class.getName());
+            createCache(cm, com.zh.raback.domain.Museum.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

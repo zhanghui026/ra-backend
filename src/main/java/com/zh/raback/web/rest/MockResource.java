@@ -18,6 +18,7 @@ public class MockResource {
     @Autowired
     private ArtMockService artMockService;
 
+
     @PostMapping("/mockData")
     public void initData(){
         mockService.init();
@@ -28,6 +29,7 @@ public class MockResource {
     public void initArt(){
         artMockService.mockArtist();
         artMockService.mockPainting();
+        artMockService.mockMuseum();
     }
 
 

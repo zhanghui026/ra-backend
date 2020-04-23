@@ -1,0 +1,41 @@
+{
+  "rabackApp": {
+    "museum": {
+      "home": {
+        "title": "Museums",
+        "createLabel": "Create a new Museum",
+        "createOrEditLabel": "Create or edit a Museum",
+        "notFound": "No Museums found"
+      },
+      "created": "A new Museum is created with identifier {{ param }}",
+      "updated": "A Museum is updated with identifier {{ param }}",
+      "deleted": "A Museum is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Museum {{ id }}?"
+      },
+      "detail": {
+        "title": "Museum"
+      },
+      "name": "Name",
+      "rsName": "Rs Name",
+      "enName": "En Name",
+      "fullName": "Full Name",
+      "rsFullName": "Rs Full Name",
+      "enFullName": "En Full Name",
+      "address": "Address",
+      "rsAddress": "Rs Address",
+      "enAddress": "En Address",
+      "brief": "Brief",
+      "enBrief": "En Brief",
+      "rsBrief": "Rs Brief",
+      "phoneNum": "Phone Num",
+      "contactPerson": "Contact Person",
+      "createDate": "Create Date",
+      "updateDate": "Update Date",
+      "mainImg": "Main Img",
+      "help": {
+        "name": "name"
+      }
+    }
+  }
+}

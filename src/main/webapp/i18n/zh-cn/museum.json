@@ -1,0 +1,41 @@
+{
+  "rabackApp": {
+    "museum": {
+      "home": {
+        "title": "Museums",
+        "createLabel": "创建新 Museum",
+        "createOrEditLabel": "创建或编辑 Museum",
+        "notFound": "No Museums found"
+      },
+      "created": "Museum {{ param }} 创建成功",
+      "updated": "Museum {{ param }} 更新成功",
+      "deleted": "Museum {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Museum {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Museum"
+      },
+      "name": "Name",
+      "rsName": "Rs Name",
+      "enName": "En Name",
+      "fullName": "Full Name",
+      "rsFullName": "Rs Full Name",
+      "enFullName": "En Full Name",
+      "address": "Address",
+      "rsAddress": "Rs Address",
+      "enAddress": "En Address",
+      "brief": "Brief",
+      "enBrief": "En Brief",
+      "rsBrief": "Rs Brief",
+      "phoneNum": "Phone Num",
+      "contactPerson": "Contact Person",
+      "createDate": "Create Date",
+      "updateDate": "Update Date",
+      "mainImg": "Main Img",
+      "help": {
+        "name": "name"
+      }
+    }
+  }
+}

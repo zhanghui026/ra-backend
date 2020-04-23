@@ -56,6 +56,10 @@ import artist, {
 import painting, {
   PaintingState
 } from 'app/entities/painting/painting.reducer';
+// prettier-ignore
+import museum, {
+  MuseumState
+} from 'app/entities/museum/museum.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -80,6 +84,7 @@ export interface IRootState {
   readonly review: ReviewState;
   readonly artist: ArtistState;
   readonly painting: PaintingState;
+  readonly museum: MuseumState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -106,6 +111,7 @@ const rootReducer = combineReducers<IRootState>({
   review,
   artist,
   painting,
+  museum,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar
 });
