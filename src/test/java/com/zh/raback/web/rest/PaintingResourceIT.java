@@ -47,12 +47,6 @@ public class PaintingResourceIT {
     private static final Long DEFAULT_ARTIST_ID = 1L;
     private static final Long UPDATED_ARTIST_ID = 2L;
 
-    private static final Long DEFAULT_MATERIAL_ID = 1L;
-    private static final Long UPDATED_MATERIAL_ID = 2L;
-
-    private static final Long DEFAULT_ART_TYPE_ID = 1L;
-    private static final Long UPDATED_ART_TYPE_ID = 2L;
-
     private static final Long DEFAULT_MUSEUM_ID = 1L;
     private static final Long UPDATED_MUSEUM_ID = 2L;
 
@@ -85,9 +79,6 @@ public class PaintingResourceIT {
 
     private static final String DEFAULT_REFERENCE = "AAAAAAAAAA";
     private static final String UPDATED_REFERENCE = "BBBBBBBBBB";
-
-    private static final Long DEFAULT_CATEGORY_STATUS_ID = 1L;
-    private static final Long UPDATED_CATEGORY_STATUS_ID = 2L;
 
     private static final String DEFAULT_SENTENCE = "AAAAAAAAAA";
     private static final String UPDATED_SENTENCE = "BBBBBBBBBB";
@@ -128,6 +119,12 @@ public class PaintingResourceIT {
     private static final Boolean DEFAULT_USE_ARTIST_INFO = false;
     private static final Boolean UPDATED_USE_ARTIST_INFO = true;
 
+    private static final String DEFAULT_CATEGORY = "AAAAAAAAAA";
+    private static final String UPDATED_CATEGORY = "BBBBBBBBBB";
+
+    private static final String DEFAULT_MATERIAL = "AAAAAAAAAA";
+    private static final String UPDATED_MATERIAL = "BBBBBBBBBB";
+
     @Autowired
     private PaintingRepository paintingRepository;
 
@@ -157,8 +154,6 @@ public class PaintingResourceIT {
             .rsName(DEFAULT_RS_NAME)
             .enName(DEFAULT_EN_NAME)
             .artistId(DEFAULT_ARTIST_ID)
-            .materialId(DEFAULT_MATERIAL_ID)
-            .artTypeId(DEFAULT_ART_TYPE_ID)
             .museumId(DEFAULT_MUSEUM_ID)
             .age(DEFAULT_AGE)
             .tags(DEFAULT_TAGS)
@@ -170,7 +165,6 @@ public class PaintingResourceIT {
             .pin(DEFAULT_PIN)
             .pinImg(DEFAULT_PIN_IMG)
             .reference(DEFAULT_REFERENCE)
-            .categoryStatusId(DEFAULT_CATEGORY_STATUS_ID)
             .sentence(DEFAULT_SENTENCE)
             .rsSentence(DEFAULT_RS_SENTENCE)
             .enSentence(DEFAULT_EN_SENTENCE)
@@ -183,7 +177,9 @@ public class PaintingResourceIT {
             .rating(DEFAULT_RATING)
             .createDate(DEFAULT_CREATE_DATE)
             .updateDate(DEFAULT_UPDATE_DATE)
-            .useArtistInfo(DEFAULT_USE_ARTIST_INFO);
+            .useArtistInfo(DEFAULT_USE_ARTIST_INFO)
+            .category(DEFAULT_CATEGORY)
+            .material(DEFAULT_MATERIAL);
         return painting;
     }
     /**
@@ -198,8 +194,6 @@ public class PaintingResourceIT {
             .rsName(UPDATED_RS_NAME)
             .enName(UPDATED_EN_NAME)
             .artistId(UPDATED_ARTIST_ID)
-            .materialId(UPDATED_MATERIAL_ID)
-            .artTypeId(UPDATED_ART_TYPE_ID)
             .museumId(UPDATED_MUSEUM_ID)
             .age(UPDATED_AGE)
             .tags(UPDATED_TAGS)
@@ -211,7 +205,6 @@ public class PaintingResourceIT {
             .pin(UPDATED_PIN)
             .pinImg(UPDATED_PIN_IMG)
             .reference(UPDATED_REFERENCE)
-            .categoryStatusId(UPDATED_CATEGORY_STATUS_ID)
             .sentence(UPDATED_SENTENCE)
             .rsSentence(UPDATED_RS_SENTENCE)
             .enSentence(UPDATED_EN_SENTENCE)
@@ -224,7 +217,9 @@ public class PaintingResourceIT {
             .rating(UPDATED_RATING)
             .createDate(UPDATED_CREATE_DATE)
             .updateDate(UPDATED_UPDATE_DATE)
-            .useArtistInfo(UPDATED_USE_ARTIST_INFO);
+            .useArtistInfo(UPDATED_USE_ARTIST_INFO)
+            .category(UPDATED_CATEGORY)
+            .material(UPDATED_MATERIAL);
         return painting;
     }
 
@@ -253,8 +248,6 @@ public class PaintingResourceIT {
         assertThat(testPainting.getRsName()).isEqualTo(DEFAULT_RS_NAME);
         assertThat(testPainting.getEnName()).isEqualTo(DEFAULT_EN_NAME);
         assertThat(testPainting.getArtistId()).isEqualTo(DEFAULT_ARTIST_ID);
-        assertThat(testPainting.getMaterialId()).isEqualTo(DEFAULT_MATERIAL_ID);
-        assertThat(testPainting.getArtTypeId()).isEqualTo(DEFAULT_ART_TYPE_ID);
         assertThat(testPainting.getMuseumId()).isEqualTo(DEFAULT_MUSEUM_ID);
         assertThat(testPainting.getAge()).isEqualTo(DEFAULT_AGE);
         assertThat(testPainting.getTags()).isEqualTo(DEFAULT_TAGS);
@@ -266,7 +259,6 @@ public class PaintingResourceIT {
         assertThat(testPainting.getPin()).isEqualTo(DEFAULT_PIN);
         assertThat(testPainting.getPinImg()).isEqualTo(DEFAULT_PIN_IMG);
         assertThat(testPainting.getReference()).isEqualTo(DEFAULT_REFERENCE);
-        assertThat(testPainting.getCategoryStatusId()).isEqualTo(DEFAULT_CATEGORY_STATUS_ID);
         assertThat(testPainting.getSentence()).isEqualTo(DEFAULT_SENTENCE);
         assertThat(testPainting.getRsSentence()).isEqualTo(DEFAULT_RS_SENTENCE);
         assertThat(testPainting.getEnSentence()).isEqualTo(DEFAULT_EN_SENTENCE);
@@ -280,6 +272,8 @@ public class PaintingResourceIT {
         assertThat(testPainting.getCreateDate()).isEqualTo(DEFAULT_CREATE_DATE);
         assertThat(testPainting.getUpdateDate()).isEqualTo(DEFAULT_UPDATE_DATE);
         assertThat(testPainting.isUseArtistInfo()).isEqualTo(DEFAULT_USE_ARTIST_INFO);
+        assertThat(testPainting.getCategory()).isEqualTo(DEFAULT_CATEGORY);
+        assertThat(testPainting.getMaterial()).isEqualTo(DEFAULT_MATERIAL);
     }
 
     @Test
@@ -337,8 +331,6 @@ public class PaintingResourceIT {
             .andExpect(jsonPath("$.[*].rsName").value(hasItem(DEFAULT_RS_NAME)))
             .andExpect(jsonPath("$.[*].enName").value(hasItem(DEFAULT_EN_NAME)))
             .andExpect(jsonPath("$.[*].artistId").value(hasItem(DEFAULT_ARTIST_ID.intValue())))
-            .andExpect(jsonPath("$.[*].materialId").value(hasItem(DEFAULT_MATERIAL_ID.intValue())))
-            .andExpect(jsonPath("$.[*].artTypeId").value(hasItem(DEFAULT_ART_TYPE_ID.intValue())))
             .andExpect(jsonPath("$.[*].museumId").value(hasItem(DEFAULT_MUSEUM_ID.intValue())))
             .andExpect(jsonPath("$.[*].age").value(hasItem(DEFAULT_AGE)))
             .andExpect(jsonPath("$.[*].tags").value(hasItem(DEFAULT_TAGS)))
@@ -350,7 +342,6 @@ public class PaintingResourceIT {
             .andExpect(jsonPath("$.[*].pin").value(hasItem(DEFAULT_PIN)))
             .andExpect(jsonPath("$.[*].pinImg").value(hasItem(DEFAULT_PIN_IMG)))
             .andExpect(jsonPath("$.[*].reference").value(hasItem(DEFAULT_REFERENCE)))
-            .andExpect(jsonPath("$.[*].categoryStatusId").value(hasItem(DEFAULT_CATEGORY_STATUS_ID.intValue())))
             .andExpect(jsonPath("$.[*].sentence").value(hasItem(DEFAULT_SENTENCE)))
             .andExpect(jsonPath("$.[*].rsSentence").value(hasItem(DEFAULT_RS_SENTENCE)))
             .andExpect(jsonPath("$.[*].enSentence").value(hasItem(DEFAULT_EN_SENTENCE)))
@@ -363,7 +354,9 @@ public class PaintingResourceIT {
             .andExpect(jsonPath("$.[*].rating").value(hasItem(DEFAULT_RATING)))
             .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE.toString())))
             .andExpect(jsonPath("$.[*].updateDate").value(hasItem(DEFAULT_UPDATE_DATE.toString())))
-            .andExpect(jsonPath("$.[*].useArtistInfo").value(hasItem(DEFAULT_USE_ARTIST_INFO.booleanValue())));
+            .andExpect(jsonPath("$.[*].useArtistInfo").value(hasItem(DEFAULT_USE_ARTIST_INFO.booleanValue())))
+            .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)))
+            .andExpect(jsonPath("$.[*].material").value(hasItem(DEFAULT_MATERIAL)));
     }
     
     @Test
@@ -381,8 +374,6 @@ public class PaintingResourceIT {
             .andExpect(jsonPath("$.rsName").value(DEFAULT_RS_NAME))
             .andExpect(jsonPath("$.enName").value(DEFAULT_EN_NAME))
             .andExpect(jsonPath("$.artistId").value(DEFAULT_ARTIST_ID.intValue()))
-            .andExpect(jsonPath("$.materialId").value(DEFAULT_MATERIAL_ID.intValue()))
-            .andExpect(jsonPath("$.artTypeId").value(DEFAULT_ART_TYPE_ID.intValue()))
             .andExpect(jsonPath("$.museumId").value(DEFAULT_MUSEUM_ID.intValue()))
             .andExpect(jsonPath("$.age").value(DEFAULT_AGE))
             .andExpect(jsonPath("$.tags").value(DEFAULT_TAGS))
@@ -394,7 +385,6 @@ public class PaintingResourceIT {
             .andExpect(jsonPath("$.pin").value(DEFAULT_PIN))
             .andExpect(jsonPath("$.pinImg").value(DEFAULT_PIN_IMG))
             .andExpect(jsonPath("$.reference").value(DEFAULT_REFERENCE))
-            .andExpect(jsonPath("$.categoryStatusId").value(DEFAULT_CATEGORY_STATUS_ID.intValue()))
             .andExpect(jsonPath("$.sentence").value(DEFAULT_SENTENCE))
             .andExpect(jsonPath("$.rsSentence").value(DEFAULT_RS_SENTENCE))
             .andExpect(jsonPath("$.enSentence").value(DEFAULT_EN_SENTENCE))
@@ -407,7 +397,9 @@ public class PaintingResourceIT {
             .andExpect(jsonPath("$.rating").value(DEFAULT_RATING))
             .andExpect(jsonPath("$.createDate").value(DEFAULT_CREATE_DATE.toString()))
             .andExpect(jsonPath("$.updateDate").value(DEFAULT_UPDATE_DATE.toString()))
-            .andExpect(jsonPath("$.useArtistInfo").value(DEFAULT_USE_ARTIST_INFO.booleanValue()));
+            .andExpect(jsonPath("$.useArtistInfo").value(DEFAULT_USE_ARTIST_INFO.booleanValue()))
+            .andExpect(jsonPath("$.category").value(DEFAULT_CATEGORY))
+            .andExpect(jsonPath("$.material").value(DEFAULT_MATERIAL));
     }
 
     @Test
@@ -435,8 +427,6 @@ public class PaintingResourceIT {
             .rsName(UPDATED_RS_NAME)
             .enName(UPDATED_EN_NAME)
             .artistId(UPDATED_ARTIST_ID)
-            .materialId(UPDATED_MATERIAL_ID)
-            .artTypeId(UPDATED_ART_TYPE_ID)
             .museumId(UPDATED_MUSEUM_ID)
             .age(UPDATED_AGE)
             .tags(UPDATED_TAGS)
@@ -448,7 +438,6 @@ public class PaintingResourceIT {
             .pin(UPDATED_PIN)
             .pinImg(UPDATED_PIN_IMG)
             .reference(UPDATED_REFERENCE)
-            .categoryStatusId(UPDATED_CATEGORY_STATUS_ID)
             .sentence(UPDATED_SENTENCE)
             .rsSentence(UPDATED_RS_SENTENCE)
             .enSentence(UPDATED_EN_SENTENCE)
@@ -461,7 +450,9 @@ public class PaintingResourceIT {
             .rating(UPDATED_RATING)
             .createDate(UPDATED_CREATE_DATE)
             .updateDate(UPDATED_UPDATE_DATE)
-            .useArtistInfo(UPDATED_USE_ARTIST_INFO);
+            .useArtistInfo(UPDATED_USE_ARTIST_INFO)
+            .category(UPDATED_CATEGORY)
+            .material(UPDATED_MATERIAL);
         PaintingDTO paintingDTO = paintingMapper.toDto(updatedPainting);
 
         restPaintingMockMvc.perform(put("/api/paintings")
@@ -477,8 +468,6 @@ public class PaintingResourceIT {
         assertThat(testPainting.getRsName()).isEqualTo(UPDATED_RS_NAME);
         assertThat(testPainting.getEnName()).isEqualTo(UPDATED_EN_NAME);
         assertThat(testPainting.getArtistId()).isEqualTo(UPDATED_ARTIST_ID);
-        assertThat(testPainting.getMaterialId()).isEqualTo(UPDATED_MATERIAL_ID);
-        assertThat(testPainting.getArtTypeId()).isEqualTo(UPDATED_ART_TYPE_ID);
         assertThat(testPainting.getMuseumId()).isEqualTo(UPDATED_MUSEUM_ID);
         assertThat(testPainting.getAge()).isEqualTo(UPDATED_AGE);
         assertThat(testPainting.getTags()).isEqualTo(UPDATED_TAGS);
@@ -490,7 +479,6 @@ public class PaintingResourceIT {
         assertThat(testPainting.getPin()).isEqualTo(UPDATED_PIN);
         assertThat(testPainting.getPinImg()).isEqualTo(UPDATED_PIN_IMG);
         assertThat(testPainting.getReference()).isEqualTo(UPDATED_REFERENCE);
-        assertThat(testPainting.getCategoryStatusId()).isEqualTo(UPDATED_CATEGORY_STATUS_ID);
         assertThat(testPainting.getSentence()).isEqualTo(UPDATED_SENTENCE);
         assertThat(testPainting.getRsSentence()).isEqualTo(UPDATED_RS_SENTENCE);
         assertThat(testPainting.getEnSentence()).isEqualTo(UPDATED_EN_SENTENCE);
@@ -504,6 +492,8 @@ public class PaintingResourceIT {
         assertThat(testPainting.getCreateDate()).isEqualTo(UPDATED_CREATE_DATE);
         assertThat(testPainting.getUpdateDate()).isEqualTo(UPDATED_UPDATE_DATE);
         assertThat(testPainting.isUseArtistInfo()).isEqualTo(UPDATED_USE_ARTIST_INFO);
+        assertThat(testPainting.getCategory()).isEqualTo(UPDATED_CATEGORY);
+        assertThat(testPainting.getMaterial()).isEqualTo(UPDATED_MATERIAL);
     }
 
     @Test

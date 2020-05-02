@@ -76,12 +76,6 @@ export const Painting = (props: IPaintingProps) => {
                 <th className="hand" onClick={sort('artistId')}>
                   <Translate contentKey="rabackApp.painting.artistId">Artist Id</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={sort('materialId')}>
-                  <Translate contentKey="rabackApp.painting.materialId">Material Id</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('artTypeId')}>
-                  <Translate contentKey="rabackApp.painting.artTypeId">Art Type Id</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
                 <th className="hand" onClick={sort('museumId')}>
                   <Translate contentKey="rabackApp.painting.museumId">Museum Id</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -114,9 +108,6 @@ export const Painting = (props: IPaintingProps) => {
                 </th>
                 <th className="hand" onClick={sort('reference')}>
                   <Translate contentKey="rabackApp.painting.reference">Reference</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('categoryStatusId')}>
-                  <Translate contentKey="rabackApp.painting.categoryStatusId">Category Status Id</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('sentence')}>
                   <Translate contentKey="rabackApp.painting.sentence">Sentence</Translate> <FontAwesomeIcon icon="sort" />
@@ -157,6 +148,12 @@ export const Painting = (props: IPaintingProps) => {
                 <th className="hand" onClick={sort('useArtistInfo')}>
                   <Translate contentKey="rabackApp.painting.useArtistInfo">Use Artist Info</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('category')}>
+                  <Translate contentKey="rabackApp.painting.category">Category</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('material')}>
+                  <Translate contentKey="rabackApp.painting.material">Material</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -172,8 +169,6 @@ export const Painting = (props: IPaintingProps) => {
                   <td>{painting.rsName}</td>
                   <td>{painting.enName}</td>
                   <td>{painting.artistId}</td>
-                  <td>{painting.materialId}</td>
-                  <td>{painting.artTypeId}</td>
                   <td>{painting.museumId}</td>
                   <td>{painting.age}</td>
                   <td>{painting.tags}</td>
@@ -185,7 +180,6 @@ export const Painting = (props: IPaintingProps) => {
                   <td>{painting.pin}</td>
                   <td>{painting.pinImg}</td>
                   <td>{painting.reference}</td>
-                  <td>{painting.categoryStatusId}</td>
                   <td>{painting.sentence}</td>
                   <td>{painting.rsSentence}</td>
                   <td>{painting.enSentence}</td>
@@ -203,6 +197,8 @@ export const Painting = (props: IPaintingProps) => {
                     <TextFormat type="date" value={painting.updateDate} format={APP_DATE_FORMAT} />
                   </td>
                   <td>{painting.useArtistInfo ? 'true' : 'false'}</td>
+                  <td>{painting.category}</td>
+                  <td>{painting.material}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${painting.id}`} color="info" size="sm">

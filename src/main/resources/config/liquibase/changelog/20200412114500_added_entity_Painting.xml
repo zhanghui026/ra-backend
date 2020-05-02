@@ -28,12 +28,6 @@
             <column name="artist_id" type="bigint" remarks="artistId">
                 <constraints nullable="true" />
             </column>
-            <column name="material_id" type="bigint" remarks="材质material id">
-                <constraints nullable="true" />
-            </column>
-            <column name="art_type_id" type="bigint" remarks="类型">
-                <constraints nullable="true" />
-            </column>
             <column name="museum_id" type="bigint" remarks="艺术馆id">
                 <constraints nullable="true" />
             </column>
@@ -65,9 +59,6 @@
                 <constraints nullable="true" />
             </column>
             <column name="reference" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="category_status_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="sentence" type="varchar(800)">
@@ -109,6 +100,12 @@
             <column name="use_artist_info" type="boolean" defaultValue="true">
                 <constraints nullable="false" />
             </column>
+            <column name="category" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="material" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="painting" columnName="create_date" columnDataType="datetime"/>
@@ -138,8 +135,6 @@
 <!--            <column name="rs_name" type="string"/>-->
 <!--            <column name="en_name" type="string"/>-->
 <!--            <column name="artist_id" type="numeric"/>-->
-<!--            <column name="material_id" type="numeric"/>-->
-<!--            <column name="art_type_id" type="numeric"/>-->
 <!--            <column name="museum_id" type="numeric"/>-->
 <!--            <column name="age" type="string"/>-->
 <!--            <column name="tags" type="string"/>-->
@@ -151,7 +146,6 @@
 <!--            <column name="pin" type="string"/>-->
 <!--            <column name="pin_img" type="string"/>-->
 <!--            <column name="reference" type="string"/>-->
-<!--            <column name="category_status_id" type="numeric"/>-->
 <!--            <column name="sentence" type="string"/>-->
 <!--            <column name="rs_sentence" type="string"/>-->
 <!--            <column name="en_sentence" type="string"/>-->
@@ -165,6 +159,8 @@
 <!--            <column name="create_date" type="datetime"/>-->
 <!--            <column name="update_date" type="datetime"/>-->
 <!--            <column name="use_artist_info" type="boolean"/>-->
+<!--            <column name="category" type="string"/>-->
+<!--            <column name="material" type="string"/>-->
 <!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove&ndash;&gt;-->
 <!--        </loadData>-->
     </changeSet>

@@ -49,18 +49,6 @@ public class Painting implements Serializable {
     private Long artistId;
 
     /**
-     * 材质material id
-     */
-    @Column(name = "material_id")
-    private Long materialId;
-
-    /**
-     * 类型
-     */
-    @Column(name = "art_type_id")
-    private Long artTypeId;
-
-    /**
      * 艺术馆id
      */
     @Column(name = "museum_id")
@@ -101,9 +89,6 @@ public class Painting implements Serializable {
 
     @Column(name = "reference")
     private String reference;
-
-    @Column(name = "category_status_id")
-    private Long categoryStatusId;
 
     @Column(name = "sentence")
     private String sentence;
@@ -153,6 +138,12 @@ public class Painting implements Serializable {
     @NotNull
     @Column(name = "use_artist_info", nullable = false)
     private Boolean useArtistInfo;
+
+    @Column(name = "category")
+    private String category;
+
+    @Column(name = "material")
+    private String material;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -213,32 +204,6 @@ public class Painting implements Serializable {
 
     public void setArtistId(Long artistId) {
         this.artistId = artistId;
-    }
-
-    public Long getMaterialId() {
-        return materialId;
-    }
-
-    public Painting materialId(Long materialId) {
-        this.materialId = materialId;
-        return this;
-    }
-
-    public void setMaterialId(Long materialId) {
-        this.materialId = materialId;
-    }
-
-    public Long getArtTypeId() {
-        return artTypeId;
-    }
-
-    public Painting artTypeId(Long artTypeId) {
-        this.artTypeId = artTypeId;
-        return this;
-    }
-
-    public void setArtTypeId(Long artTypeId) {
-        this.artTypeId = artTypeId;
     }
 
     public Long getMuseumId() {
@@ -382,19 +347,6 @@ public class Painting implements Serializable {
 
     public void setReference(String reference) {
         this.reference = reference;
-    }
-
-    public Long getCategoryStatusId() {
-        return categoryStatusId;
-    }
-
-    public Painting categoryStatusId(Long categoryStatusId) {
-        this.categoryStatusId = categoryStatusId;
-        return this;
-    }
-
-    public void setCategoryStatusId(Long categoryStatusId) {
-        this.categoryStatusId = categoryStatusId;
     }
 
     public String getSentence() {
@@ -565,6 +517,32 @@ public class Painting implements Serializable {
     public void setUseArtistInfo(Boolean useArtistInfo) {
         this.useArtistInfo = useArtistInfo;
     }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public Painting category(String category) {
+        this.category = category;
+        return this;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public Painting material(String material) {
+        this.material = material;
+        return this;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -591,8 +569,6 @@ public class Painting implements Serializable {
             ", rsName='" + getRsName() + "'" +
             ", enName='" + getEnName() + "'" +
             ", artistId=" + getArtistId() +
-            ", materialId=" + getMaterialId() +
-            ", artTypeId=" + getArtTypeId() +
             ", museumId=" + getMuseumId() +
             ", age='" + getAge() + "'" +
             ", tags='" + getTags() + "'" +
@@ -604,7 +580,6 @@ public class Painting implements Serializable {
             ", pin='" + getPin() + "'" +
             ", pinImg='" + getPinImg() + "'" +
             ", reference='" + getReference() + "'" +
-            ", categoryStatusId=" + getCategoryStatusId() +
             ", sentence='" + getSentence() + "'" +
             ", rsSentence='" + getRsSentence() + "'" +
             ", enSentence='" + getEnSentence() + "'" +
@@ -618,6 +593,8 @@ public class Painting implements Serializable {
             ", createDate='" + getCreateDate() + "'" +
             ", updateDate='" + getUpdateDate() + "'" +
             ", useArtistInfo='" + isUseArtistInfo() + "'" +
+            ", category='" + getCategory() + "'" +
+            ", material='" + getMaterial() + "'" +
             "}";
     }
 }

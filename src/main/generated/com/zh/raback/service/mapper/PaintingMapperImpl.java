@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-04-18T22:53:02+0800",
+    date = "2020-05-02T12:57:25+0800",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.3 (Oracle Corporation)"
 )
 @Component
@@ -28,8 +28,6 @@ public class PaintingMapperImpl implements PaintingMapper {
         painting.setRsName( dto.getRsName() );
         painting.setEnName( dto.getEnName() );
         painting.setArtistId( dto.getArtistId() );
-        painting.setMaterialId( dto.getMaterialId() );
-        painting.setArtTypeId( dto.getArtTypeId() );
         painting.setMuseumId( dto.getMuseumId() );
         painting.setAge( dto.getAge() );
         painting.setTags( dto.getTags() );
@@ -41,7 +39,6 @@ public class PaintingMapperImpl implements PaintingMapper {
         painting.setPin( dto.getPin() );
         painting.setPinImg( dto.getPinImg() );
         painting.setReference( dto.getReference() );
-        painting.setCategoryStatusId( dto.getCategoryStatusId() );
         painting.setSentence( dto.getSentence() );
         painting.setRsSentence( dto.getRsSentence() );
         painting.setEnSentence( dto.getEnSentence() );
@@ -55,6 +52,8 @@ public class PaintingMapperImpl implements PaintingMapper {
         painting.setCreateDate( dto.getCreateDate() );
         painting.setUpdateDate( dto.getUpdateDate() );
         painting.setUseArtistInfo( dto.isUseArtistInfo() );
+        painting.setCategory( dto.getCategory() );
+        painting.setMaterial( dto.getMaterial() );
 
         return painting;
     }
@@ -72,8 +71,6 @@ public class PaintingMapperImpl implements PaintingMapper {
         paintingDTO.setRsName( entity.getRsName() );
         paintingDTO.setEnName( entity.getEnName() );
         paintingDTO.setArtistId( entity.getArtistId() );
-        paintingDTO.setMaterialId( entity.getMaterialId() );
-        paintingDTO.setArtTypeId( entity.getArtTypeId() );
         paintingDTO.setMuseumId( entity.getMuseumId() );
         paintingDTO.setAge( entity.getAge() );
         paintingDTO.setTags( entity.getTags() );
@@ -85,7 +82,6 @@ public class PaintingMapperImpl implements PaintingMapper {
         paintingDTO.setPin( entity.getPin() );
         paintingDTO.setPinImg( entity.getPinImg() );
         paintingDTO.setReference( entity.getReference() );
-        paintingDTO.setCategoryStatusId( entity.getCategoryStatusId() );
         paintingDTO.setSentence( entity.getSentence() );
         paintingDTO.setRsSentence( entity.getRsSentence() );
         paintingDTO.setEnSentence( entity.getEnSentence() );
@@ -99,6 +95,8 @@ public class PaintingMapperImpl implements PaintingMapper {
         paintingDTO.setCreateDate( entity.getCreateDate() );
         paintingDTO.setUpdateDate( entity.getUpdateDate() );
         paintingDTO.setUseArtistInfo( entity.isUseArtistInfo() );
+        paintingDTO.setCategory( entity.getCategory() );
+        paintingDTO.setMaterial( entity.getMaterial() );
 
         return paintingDTO;
     }

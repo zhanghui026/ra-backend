@@ -2,7 +2,6 @@ package com.zh.raback.service.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.time.Instant;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -41,18 +40,6 @@ public class PaintingDTO implements Serializable {
     private Long artistId;
 
     /**
-     * 材质material id
-     */
-    @ApiModelProperty(value = "材质material id")
-    private Long materialId;
-
-    /**
-     * 类型
-     */
-    @ApiModelProperty(value = "类型")
-    private Long artTypeId;
-
-    /**
      * 艺术馆id
      */
     @ApiModelProperty(value = "艺术馆id")
@@ -86,13 +73,13 @@ public class PaintingDTO implements Serializable {
 
     private String reference;
 
-    private Long categoryStatusId;
-
     private String sentence;
 
     private String rsSentence;
 
     private String enSentence;
+
+    private String material;
 
     /**
      * 画家简介
@@ -126,6 +113,8 @@ public class PaintingDTO implements Serializable {
 
     @NotNull
     private Boolean useArtistInfo;
+
+    private String category;
 
 
     public String getImageNo() {
@@ -176,22 +165,6 @@ public class PaintingDTO implements Serializable {
 
     public void setArtistId(Long artistId) {
         this.artistId = artistId;
-    }
-
-    public Long getMaterialId() {
-        return materialId;
-    }
-
-    public void setMaterialId(Long materialId) {
-        this.materialId = materialId;
-    }
-
-    public Long getArtTypeId() {
-        return artTypeId;
-    }
-
-    public void setArtTypeId(Long artTypeId) {
-        this.artTypeId = artTypeId;
     }
 
     public Long getMuseumId() {
@@ -280,14 +253,6 @@ public class PaintingDTO implements Serializable {
 
     public void setReference(String reference) {
         this.reference = reference;
-    }
-
-    public Long getCategoryStatusId() {
-        return categoryStatusId;
-    }
-
-    public void setCategoryStatusId(Long categoryStatusId) {
-        this.categoryStatusId = categoryStatusId;
     }
 
     public String getSentence() {
@@ -394,6 +359,22 @@ public class PaintingDTO implements Serializable {
         this.useArtistInfo = useArtistInfo;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -423,8 +404,6 @@ public class PaintingDTO implements Serializable {
             ", rsName='" + getRsName() + "'" +
             ", enName='" + getEnName() + "'" +
             ", artistId=" + getArtistId() +
-            ", materialId=" + getMaterialId() +
-            ", artTypeId=" + getArtTypeId() +
             ", museumId=" + getMuseumId() +
             ", age='" + getAge() + "'" +
             ", tags='" + getTags() + "'" +
@@ -436,7 +415,6 @@ public class PaintingDTO implements Serializable {
             ", pin='" + getPin() + "'" +
             ", pinImg='" + getPinImg() + "'" +
             ", reference='" + getReference() + "'" +
-            ", categoryStatusId=" + getCategoryStatusId() +
             ", sentence='" + getSentence() + "'" +
             ", rsSentence='" + getRsSentence() + "'" +
             ", enSentence='" + getEnSentence() + "'" +
@@ -450,6 +428,8 @@ public class PaintingDTO implements Serializable {
             ", createDate='" + getCreateDate() + "'" +
             ", updateDate='" + getUpdateDate() + "'" +
             ", useArtistInfo='" + isUseArtistInfo() + "'" +
+            ", category='" + getCategory() + "'" +
+            ", material='" + getMaterial() + "'" +
             "}";
     }
 }

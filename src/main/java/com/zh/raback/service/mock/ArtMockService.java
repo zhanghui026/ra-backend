@@ -95,10 +95,6 @@ public class ArtMockService {
                 .contactPerson(Faker.instance(Locale.CHINA).name().name())
                 .mainImg(Faker.instance().internet().image());
 
-
-
-
-
             return museum;
         }).collect(Collectors.toList());
 
@@ -159,6 +155,8 @@ public class ArtMockService {
                         "-" + c
                     ).width((float) width)
                     .height((float) height)
+                    .category(CategoryEnum.values()[CommonUtils.toRandomInt(0,CategoryEnum.values().length -1)].name())
+                    .material(MaterialEnum.values()[CommonUtils.toRandomInt(0,MaterialEnum.values().length -1)].name())
                     .age(Faker.instance().book().genre())
                     .thumbnailImg(thumbnail)
                     .rawImg(image)

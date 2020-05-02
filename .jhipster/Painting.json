@@ -22,16 +22,6 @@
             "fieldType": "Long"
         },
         {
-            "fieldName": "materialId",
-            "javadoc": "材质material id",
-            "fieldType": "Long"
-        },
-        {
-            "fieldName": "artTypeId",
-            "javadoc": "类型",
-            "fieldType": "Long"
-        },
-        {
             "fieldName": "museumId",
             "javadoc": "艺术馆id",
             "fieldType": "Long"
@@ -77,10 +67,6 @@
         {
             "fieldName": "reference",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "categoryStatusId",
-            "fieldType": "Long"
         },
         {
             "fieldName": "sentence",
@@ -139,6 +125,14 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "category",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "material",
+            "fieldType": "String"
         }
     ],
     "relationships": [],

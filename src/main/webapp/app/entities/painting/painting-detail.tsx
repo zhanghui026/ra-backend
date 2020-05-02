@@ -62,24 +62,6 @@ export const PaintingDetail = (props: IPaintingDetailProps) => {
           </dt>
           <dd>{paintingEntity.artistId}</dd>
           <dt>
-            <span id="materialId">
-              <Translate contentKey="rabackApp.painting.materialId">Material Id</Translate>
-            </span>
-            <UncontrolledTooltip target="materialId">
-              <Translate contentKey="rabackApp.painting.help.materialId" />
-            </UncontrolledTooltip>
-          </dt>
-          <dd>{paintingEntity.materialId}</dd>
-          <dt>
-            <span id="artTypeId">
-              <Translate contentKey="rabackApp.painting.artTypeId">Art Type Id</Translate>
-            </span>
-            <UncontrolledTooltip target="artTypeId">
-              <Translate contentKey="rabackApp.painting.help.artTypeId" />
-            </UncontrolledTooltip>
-          </dt>
-          <dd>{paintingEntity.artTypeId}</dd>
-          <dt>
             <span id="museumId">
               <Translate contentKey="rabackApp.painting.museumId">Museum Id</Translate>
             </span>
@@ -154,12 +136,6 @@ export const PaintingDetail = (props: IPaintingDetailProps) => {
             </span>
           </dt>
           <dd>{paintingEntity.reference}</dd>
-          <dt>
-            <span id="categoryStatusId">
-              <Translate contentKey="rabackApp.painting.categoryStatusId">Category Status Id</Translate>
-            </span>
-          </dt>
-          <dd>{paintingEntity.categoryStatusId}</dd>
           <dt>
             <span id="sentence">
               <Translate contentKey="rabackApp.painting.sentence">Sentence</Translate>
@@ -251,6 +227,18 @@ export const PaintingDetail = (props: IPaintingDetailProps) => {
             </span>
           </dt>
           <dd>{paintingEntity.useArtistInfo ? 'true' : 'false'}</dd>
+          <dt>
+            <span id="category">
+              <Translate contentKey="rabackApp.painting.category">Category</Translate>
+            </span>
+          </dt>
+          <dd>{paintingEntity.category}</dd>
+          <dt>
+            <span id="material">
+              <Translate contentKey="rabackApp.painting.material">Material</Translate>
+            </span>
+          </dt>
+          <dd>{paintingEntity.material}</dd>
         </dl>
         <Button tag={Link} to="/painting" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

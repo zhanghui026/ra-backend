@@ -6,8 +6,6 @@ export interface IPainting {
   rsName?: string;
   enName?: string;
   artistId?: number;
-  materialId?: number;
-  artTypeId?: number;
   museumId?: number;
   age?: string;
   tags?: string;
@@ -19,7 +17,6 @@ export interface IPainting {
   pin?: string;
   pinImg?: string;
   reference?: string;
-  categoryStatusId?: number;
   sentence?: string;
   rsSentence?: string;
   enSentence?: string;
@@ -33,6 +30,8 @@ export interface IPainting {
   createDate?: Moment;
   updateDate?: Moment;
   useArtistInfo?: boolean;
+  category?: string;
+  material?: string;
 }
 
 export const defaultValue: Readonly<IPainting> = {

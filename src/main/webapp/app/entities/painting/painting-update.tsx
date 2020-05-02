@@ -115,24 +115,6 @@ export const PaintingUpdate = (props: IPaintingUpdateProps) => {
                 </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
-                <Label id="materialIdLabel" for="painting-materialId">
-                  <Translate contentKey="rabackApp.painting.materialId">Material Id</Translate>
-                </Label>
-                <AvField id="painting-materialId" type="string" className="form-control" name="materialId" />
-                <UncontrolledTooltip target="materialIdLabel">
-                  <Translate contentKey="rabackApp.painting.help.materialId" />
-                </UncontrolledTooltip>
-              </AvGroup>
-              <AvGroup>
-                <Label id="artTypeIdLabel" for="painting-artTypeId">
-                  <Translate contentKey="rabackApp.painting.artTypeId">Art Type Id</Translate>
-                </Label>
-                <AvField id="painting-artTypeId" type="string" className="form-control" name="artTypeId" />
-                <UncontrolledTooltip target="artTypeIdLabel">
-                  <Translate contentKey="rabackApp.painting.help.artTypeId" />
-                </UncontrolledTooltip>
-              </AvGroup>
-              <AvGroup>
                 <Label id="museumIdLabel" for="painting-museumId">
                   <Translate contentKey="rabackApp.painting.museumId">Museum Id</Translate>
                 </Label>
@@ -206,12 +188,6 @@ export const PaintingUpdate = (props: IPaintingUpdateProps) => {
                   <Translate contentKey="rabackApp.painting.reference">Reference</Translate>
                 </Label>
                 <AvField id="painting-reference" type="text" name="reference" />
-              </AvGroup>
-              <AvGroup>
-                <Label id="categoryStatusIdLabel" for="painting-categoryStatusId">
-                  <Translate contentKey="rabackApp.painting.categoryStatusId">Category Status Id</Translate>
-                </Label>
-                <AvField id="painting-categoryStatusId" type="string" className="form-control" name="categoryStatusId" />
               </AvGroup>
               <AvGroup>
                 <Label id="sentenceLabel" for="painting-sentence">
@@ -313,6 +289,18 @@ export const PaintingUpdate = (props: IPaintingUpdateProps) => {
                   <AvInput id="painting-useArtistInfo" type="checkbox" className="form-check-input" name="useArtistInfo" />
                   <Translate contentKey="rabackApp.painting.useArtistInfo">Use Artist Info</Translate>
                 </Label>
+              </AvGroup>
+              <AvGroup>
+                <Label id="categoryLabel" for="painting-category">
+                  <Translate contentKey="rabackApp.painting.category">Category</Translate>
+                </Label>
+                <AvField id="painting-category" type="text" name="category" />
+              </AvGroup>
+              <AvGroup>
+                <Label id="materialLabel" for="painting-material">
+                  <Translate contentKey="rabackApp.painting.material">Material</Translate>
+                </Label>
+                <AvField id="painting-material" type="text" name="material" />
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/painting" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
