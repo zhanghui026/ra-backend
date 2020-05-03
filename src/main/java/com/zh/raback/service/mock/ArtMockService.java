@@ -125,7 +125,7 @@ public class ArtMockService {
     }
 
     private void generateArtists() {
-        List<Artist> all = IntStream.range(0,900).mapToObj(customer -> {
+        List<Artist> all = IntStream.range(0,20).mapToObj(customer -> {
 
             Artist artist = new Artist();
             artist
