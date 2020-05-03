@@ -2,10 +2,7 @@ package com.zh.raback.service.mock;
 
 import com.github.javafaker.Faker;
 import com.zh.raback.domain.*;
-import com.zh.raback.repository.ArtistRepository;
-import com.zh.raback.repository.CategoryRepository;
-import com.zh.raback.repository.MuseumRepository;
-import com.zh.raback.repository.PaintingRepository;
+import com.zh.raback.repository.*;
 import com.zh.raback.util.CommonUtils;
 import com.zh.raback.util.FakerUtils;
 import liquibase.pro.packaged.F;
@@ -40,18 +37,44 @@ public class ArtMockService {
     @Autowired
     private MuseumRepository museumRepository;
 
+    @Autowired
+    private TagRepository tagRepository;
+
     /**
      * mock generate painting
      */
     public void mockPainting() {
         log.debug("Start to MockPainting");
         log.debug("Start to clear all painting");
+
+
+        tagRepository.deleteAll();
+
+        Tag tag = new Tag();
+        tag.setName("肖像画");
+        tagRepository.save(tag);
+
+        Tag tag2 = new Tag();
+        tag2.setName("俄罗斯油画");
+        tagRepository.save(tag2);
+
+        Tag tag3 = new Tag();
+        tag3.setName("经典油画");
+        tagRepository.save(tag3);
+
+
+
+
+
         List<Painting> paintings = paintingRepository.findAll();
         paintingRepository.deleteAll(paintings);
-
-
-
         generatePaintings();
+
+
+
+
+
+
     }
 
 
@@ -134,8 +157,12 @@ public class ArtMockService {
     private void generatePaintings() {
         List<Artist> artistList = artistRepository.findAll();
 
-
         List<Category> cats = categoryRepository.findAll();
+
+
+
+
+
         List<Painting> products = cats.stream().map(it -> {
             return IntStream.range(0, 10).mapToObj(index -> {
                 int width = CommonUtils.toRandomInt(10, 40);

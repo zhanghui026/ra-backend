@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.time.Instant;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -55,7 +56,7 @@ public class PaintingDTO implements Serializable {
      * 标签
      */
     @ApiModelProperty(value = "标签")
-    private String tags;
+    private List<String> tags;
 
     private Float width;
 
@@ -183,11 +184,11 @@ public class PaintingDTO implements Serializable {
         this.age = age;
     }
 
-    public String getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(String tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 

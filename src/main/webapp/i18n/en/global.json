@@ -19,6 +19,7 @@
         "artist": "Artist",
         "painting": "Painting",
         "museum": "Museum",
+        "tag": "Tag",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

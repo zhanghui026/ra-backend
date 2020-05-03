@@ -69,6 +69,8 @@ public class PaintingResource {
         if (paintingDTO.getId() != null) {
             throw new BadRequestAlertException("A new painting cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        changeImg(paintingDTO);
         PaintingDTO result = paintingService.save(paintingDTO);
         return ResponseEntity.created(new URI("/api/paintings/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))

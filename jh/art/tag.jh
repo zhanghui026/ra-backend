@@ -1,0 +1,3 @@
+entity Tag {
+    name String
+}

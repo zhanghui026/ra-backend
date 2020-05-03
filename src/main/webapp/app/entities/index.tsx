@@ -16,6 +16,7 @@ import Review from './review';
 import Artist from './artist';
 import Painting from './painting';
 import Museum from './museum';
+import Tag from './tag';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 const Routes = ({ match }) => (
@@ -34,6 +35,7 @@ const Routes = ({ match }) => (
       <ErrorBoundaryRoute path={`${match.url}artist`} component={Artist} />
       <ErrorBoundaryRoute path={`${match.url}painting`} component={Painting} />
       <ErrorBoundaryRoute path={`${match.url}museum`} component={Museum} />
+      <ErrorBoundaryRoute path={`${match.url}tag`} component={Tag} />
       {/* jhipster-needle-add-route-path - JHipster will add routes here */}
     </Switch>
   </div>
