@@ -93,6 +93,15 @@ public class ArtistDTO implements Serializable {
     @ApiModelProperty(value = "修改日期")
     private Instant updateDate;
 
+    public String getImageNo() {
+        return imageNo;
+    }
+
+    public void setImageNo(String imageNo) {
+        this.imageNo = imageNo;
+    }
+
+    private String imageNo;
 
     public Long getId() {
         return id;

@@ -2,6 +2,8 @@ package com.zh.raback.web.rest;
 
 import com.zh.raback.domain.Artist;
 import com.zh.raback.service.ArtistService;
+import com.zh.raback.service.FileManagerService;
+import com.zh.raback.service.dto.FileManagerDTO;
 import com.zh.raback.util.RsqlUtils;
 import com.zh.raback.web.rest.errors.BadRequestAlertException;
 import com.zh.raback.service.dto.ArtistDTO;
@@ -44,8 +46,11 @@ public class ArtistResource {
 
     private final ArtistService artistService;
 
-    public ArtistResource(ArtistService artistService) {
+    private final FileManagerService fileManagerService;
+
+    public ArtistResource(ArtistService artistService,FileManagerService fileManagerService) {
         this.artistService = artistService;
+        this.fileManagerService = fileManagerService;
     }
 
     /**
@@ -61,10 +66,21 @@ public class ArtistResource {
         if (artistDTO.getId() != null) {
             throw new BadRequestAlertException("A new artist cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        changeImg(artistDTO);
         ArtistDTO result = artistService.save(artistDTO);
         return ResponseEntity.created(new URI("/api/artists/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
+    }
+
+    private void changeImg(ArtistDTO artistDTO) {
+        if (StringUtils.isNotBlank(artistDTO.getImageNo())) {
+            Optional<FileManagerDTO> imageNo = fileManagerService.findByFileNo(artistDTO.getImageNo());
+            imageNo.ifPresent(file -> {
+
+                artistDTO.setAvatar(file.getDefaultUrl());
+            });
+        }
     }
 
     /**
@@ -82,6 +98,9 @@ public class ArtistResource {
         if (artistDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+
+        changeImg(artistDTO);
+
         ArtistDTO result = artistService.save(artistDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, artistDTO.getId().toString()))

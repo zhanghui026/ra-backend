@@ -18,7 +18,8 @@ public interface PaintingMapper extends EntityMapper<PaintingDTO, Painting> {
 
 
     @Mappings({
-        @Mapping(target = "tags",source = "tags", qualifiedBy = SplitElement.class)
+        @Mapping(target = "tags",source = "tags", qualifiedBy = SplitElement.class),
+        @Mapping(target = "imageNo",ignore = true)
 
     })
     @Override
